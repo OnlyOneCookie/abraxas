@@ -3,6 +3,7 @@ import '../styles/tokens.css';
 import '../styles/global.css';
 import UpdatePanel from '../islands/UpdatePanel';
 import { data } from '../lib/data';
+import { withBase } from '../lib/site';
 
 interface Props {
   title: string;
@@ -10,13 +11,12 @@ interface Props {
 }
 
 const { title, active } = Astro.props;
-const base = import.meta.env.BASE_URL;
 const nav = [
-  { id: 'overview', href: `${base}`, label: 'Overview', ico: '◈' },
-  { id: 'architecture', href: `${base}architecture/`, label: 'Architecture', ico: '▤' },
-  { id: 'links', href: `${base}links/`, label: 'Project links', ico: '⧉' },
-  { id: 'packages', href: `${base}packages/`, label: 'Packages & vulns', ico: '⬢' },
-  { id: 'domains', href: `${base}domains/`, label: 'Deep dives', ico: '◎' },
+  { id: 'overview', href: withBase(), label: 'Overview', ico: '◈' },
+  { id: 'architecture', href: withBase('architecture/'), label: 'Architecture', ico: '▤' },
+  { id: 'links', href: withBase('links/'), label: 'Project links', ico: '⧉' },
+  { id: 'packages', href: withBase('packages/'), label: 'Packages & vulns', ico: '⬢' },
+  { id: 'domains', href: withBase('domains/'), label: 'Deep dives', ico: '◎' },
 ];
 ---
 <!DOCTYPE html>

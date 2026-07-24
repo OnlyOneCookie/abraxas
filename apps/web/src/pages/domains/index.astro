@@ -2,8 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GlossaryTerm from '../../components/GlossaryTerm.astro';
 import { data, gloss } from '../../lib/data';
+import { withBase } from '../../lib/site';
 
-const base = import.meta.env.BASE_URL;
+const base = withBase();
 ---
 <BaseLayout title="Deep dives" active="domains">
   <h2 class="sec">Domain deep dives</h2>
@@ -14,7 +15,7 @@ const base = import.meta.env.BASE_URL;
     {data.domains
       .filter((d) => data.deepDives[d.id])
       .map((d) => (
-        <a class="dcard" href={`${base}domains/${d.id}/`} data-sec={d.securityCritical ? '1' : '0'}>
+        <a class="dcard" href={withBase(`domains/${d.id}/`)} data-sec={d.securityCritical ? '1' : '0'}>
           <h3>
             <GlossaryTerm term={d.title} gloss={gloss(d.title)} />
             {d.securityCritical && <span class="sflag">security</span>}

@@ -4,6 +4,7 @@ import TypeDot from '../components/TypeDot.astro';
 import SecurityLens from '../islands/SecurityLens';
 import SearchBox from '../islands/SearchBox';
 import { data, TYPE_COLOR, shortName } from '../lib/data';
+import { withBase } from '../lib/site';
 
 const domains = data.domains
   .filter((d) => !['unclassified', 'infra'].includes(d.id) || d.repos.length)
@@ -29,7 +30,7 @@ const layers: Array<[string, string[]]> = [
   ['Backend', ['service', 'app']],
   ['Shared / Docs', ['library', 'docs', 'external']],
 ];
-const base = import.meta.env.BASE_URL;
+const base = withBase();
 ---
 <BaseLayout title="Architecture" active="architecture">
   <Fragment slot="top">
@@ -65,7 +66,7 @@ const base = import.meta.env.BASE_URL;
                 .map((r) => (
                   <a
                     class="node"
-                    href={`${base}domains/${r.domain}/`}
+                    href={withBase(`domains/${r.domain}/`)}
                     data-sec={r.security.critical ? '1' : '0'}
                     title={r.name}
                   >

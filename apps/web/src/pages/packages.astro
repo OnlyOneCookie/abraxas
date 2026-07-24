@@ -4,8 +4,9 @@ import SecurityLens from '../islands/SecurityLens';
 import SearchBox from '../islands/SearchBox';
 import PackageTable from '../islands/PackageTable';
 import { data } from '../lib/data';
+import { withBase } from '../lib/site';
 
-const base = import.meta.env.BASE_URL;
+const base = withBase();
 const steps = [
   ['01', 'Inventory', 'Direct deps from manifests (NuGet props resolved when I can)'],
   ['02', 'Filter', 'Skip first-party @abraxas/* / Voting.*'],

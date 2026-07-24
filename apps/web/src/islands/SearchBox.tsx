@@ -47,7 +47,7 @@ export default function SearchBox({ data, base }: Props) {
               key={r.name}
               role="option"
               className="search-hit"
-              href={`${base}domains/${r.domain}/`}
+              href={`${base.replace(/\/?$/, "/") }domains/${r.domain}/`}
             >
               {r.name}
               <div className="search-hit-sub">{r.domain}</div>

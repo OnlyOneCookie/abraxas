@@ -5,6 +5,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import GlossaryTerm from '../../components/GlossaryTerm.astro';
 import { data, gloss } from '../../lib/data';
 import { renderMermaidSvgs } from '../../lib/mermaid-to-svg';
+import { withBase } from '../../lib/site';
 
 export function getStaticPaths() {
   return Object.keys(data.deepDives).map((id) => ({ params: { id } }));
@@ -14,7 +15,7 @@ const { id } = Astro.params;
 const domain = data.domains.find((d) => d.id === id);
 const dive = data.deepDives[id!];
 if (!domain || !dive) {
-  return Astro.redirect(`${import.meta.env.BASE_URL}domains/`);
+  return Astro.redirect(withBase('domains/'));
 }
 
 const rendered = await renderMermaidSvgs([
@@ -27,7 +28,7 @@ const outDir = path.join(process.cwd(), 'public/generated/flows');
 fs.mkdirSync(outDir, { recursive: true });
 fs.writeFileSync(path.join(outDir, `${id}.svg`), svg, 'utf8');
 
-const base = import.meta.env.BASE_URL;
+const base = withBase();
 const repos = data.repos.filter((r) => r.domain === id && r.type !== 'external');
 ---
 <BaseLayout title={`Deep dive: ${domain.title}`} active="domains">

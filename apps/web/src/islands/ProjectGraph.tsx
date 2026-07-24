@@ -41,7 +41,7 @@ export default function ProjectGraph({ data, base }: Props) {
           domain: r.domain,
           type: r.type,
           sec: r.security.critical ? 1 : 0,
-          href: `${base}domains/${r.domain}/`,
+          href: `${base.replace(/\/?$/, "/") }domains/${r.domain}/`,
         },
       });
     }

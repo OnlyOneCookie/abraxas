@@ -5,6 +5,7 @@ import TypeDot from '../components/TypeDot.astro';
 import SecurityLens from '../islands/SecurityLens';
 import SearchBox from '../islands/SearchBox';
 import { data, TYPE_COLOR, LANG_COLOR, gloss } from '../lib/data';
+import { withBase } from '../lib/site';
 
 const real = data.repos.filter((r) => r.type !== 'external');
 const productCounts = new Map<string, number>();
@@ -20,7 +21,7 @@ const productDesc: Record<string, string> = {
 const langCounts: Record<string, number> = {};
 for (const r of real) langCounts[r.language] = (langCounts[r.language] ?? 0) + 1;
 const langTotal = real.length || 1;
-const base = import.meta.env.BASE_URL;
+const base = withBase();
 const steps = [
   ['01', 'Trigger', 'Nightly cron or I run the workflow by hand'],
   ['02', 'Collect', 'Clone public repos, read manifests / protos / changelogs'],
@@ -112,7 +113,7 @@ const domainCards = data.domains
     {domainCards.map(({ d, rs, types }) => (
       <a
         class="dcard"
-        href={`${base}domains/${d.id}/`}
+        href={withBase(`domains/${d.id}/`)}
         data-sec={d.securityCritical ? '1' : '0'}
       >
         <h3>
