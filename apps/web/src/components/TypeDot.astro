@@ -1,0 +1,8 @@
+---
+interface Props {
+  type: string;
+  color: string;
+}
+const { type, color } = Astro.props;
+---
+<span class="tdot" style={`background:${color}`} title={type} aria-hidden="true"></span>

@@ -1,0 +1,153 @@
+---
+import fs from 'node:fs';
+import path from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GlossaryTerm from '../../components/GlossaryTerm.astro';
+import { data, gloss } from '../../lib/data';
+import { renderMermaidSvgs } from '../../lib/mermaid-to-svg';
+
+export function getStaticPaths() {
+  return Object.keys(data.deepDives).map((id) => ({ params: { id } }));
+}
+
+const { id } = Astro.params;
+const domain = data.domains.find((d) => d.id === id);
+const dive = data.deepDives[id!];
+if (!domain || !dive) {
+  return Astro.redirect(`${import.meta.env.BASE_URL}domains/`);
+}
+
+const rendered = await renderMermaidSvgs([
+  { id: id!, mermaidSource: dive.flow.mermaid },
+]);
+const svg = rendered.get(id!) ?? '';
+
+// Also persist under public for static asset path referenced in data
+const outDir = path.join(process.cwd(), 'public/generated/flows');
+fs.mkdirSync(outDir, { recursive: true });
+fs.writeFileSync(path.join(outDir, `${id}.svg`), svg, 'utf8');
+
+const base = import.meta.env.BASE_URL;
+const repos = data.repos.filter((r) => r.domain === id && r.type !== 'external');
+---
+<BaseLayout title={`Deep dive: ${domain.title}`} active="domains">
+  <div class="subtabs">
+    <a href="#dd-what">What it is</a>
+    <a href="#dd-api">API surface</a>
+    <a href="#dd-data">Data model</a>
+    <a href="#dd-flow">Flow</a>
+    <a href="#dd-sec">Security</a>
+    <a href="#dd-docs">Docs</a>
+  </div>
+
+  <div class="ddhero" id="dd-what">
+    <h2>
+      <GlossaryTerm term={domain.title} gloss={gloss(domain.title)} />
+      {domain.securityCritical && <span class="sflag">security-critical</span>}
+      <span class="badge">auto-generated · {domain.coverage.confidence}</span>
+    </h2>
+    <p>{domain.purpose}</p>
+    {dive.apps.length > 0 && (
+      <div class="apps">
+        {dive.apps.map((a) => (
+          <div class="appcard">
+            <b><GlossaryTerm term={a.name} gloss={gloss(a.name)} /></b>
+            <div class="muted" style="margin-top:2px">{a.role}</div>
+            {a.port != null && <div style="color:var(--webapp);font-size:11px;margin-top:4px">port {a.port}</div>}
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+
+  <h3 class="sec" style="margin-top:20px">Tech stack <span class="faint" style="font-weight:400">— from manifests</span></h3>
+  <div class="stackgrid">
+    {(['backend', 'frontend', 'contracts'] as const).map((k) => (
+      <div class="stackcol">
+        <h4>{k}</h4>
+        <div class="chips">
+          {(dive.stack[k] ?? []).map((x) => <span class="cap">{x}</span>)}
+          {!(dive.stack[k] ?? []).length && <span class="faint">—</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <h3 class="sec" id="dd-api" style="margin-top:20px">
+    API surface
+    <span class="faint" style="font-weight:400">— source: {dive.apiSurface.source}</span>
+  </h3>
+  {dive.apiSurface.source === 'unavailable' ? (
+    <div class="warn"><b>No proto here</b> — either this domain doesn’t publish one publicly, or parsing didn’t find services.</div>
+  ) : (
+    dive.apiSurface.services.map((s) => (
+      <div class="grp">
+        <h4 class="mono">{s.name}</h4>
+        <div class="chips">
+          {s.methods.map((m) => (
+            <span class="cap mono">{m.name}({m.request}) → {m.response}</span>
+          ))}
+        </div>
+      </div>
+    ))
+  )}
+  {dive.apiSurface.unresolvedImports.length > 0 && (
+    <p class="note">
+      Couldn’t resolve these imports (skipped, not fatal):{' '}
+      {dive.apiSurface.unresolvedImports.map((u) => `${u.import} [${u.status}]`).join(', ')}
+    </p>
+  )}
+
+  <h3 class="sec" id="dd-data">
+    Data model
+    <span class="faint" style="font-weight:400">— {dive.dataModel.source}</span>
+  </h3>
+  {dive.dataModel.groups.map((g) => (
+    <div class="grp">
+      <h4>{g.title}</h4>
+      <div class="chips">
+        {g.messages.map((m) => <span class="cap mono">{m}</span>)}
+      </div>
+    </div>
+  ))}
+  {!dive.dataModel.groups.length && <p class="muted">No proto messages turned up.</p>}
+
+  <h3 class="sec" id="dd-flow">
+    Cross-service flow
+    <span class="faint" style="font-weight:400">— best guess</span>
+  </h3>
+  <div class="warn"><b>Heads up.</b> {dive.flow.disclaimer}</div>
+  <div class="flow-svg" set:html={svg} />
+
+  <h3 class="sec" id="dd-sec">Security &amp; crypto</h3>
+  <div class="grp">
+    <ul class="seclist">
+      {dive.securityNotes.map((n) => (
+        <li>
+          <span class="badge">heuristic</span> {n.text}
+          <div class="faint" style="margin-top:4px">
+            evidence: {n.evidence.join(' · ')}
+          </div>
+        </li>
+      ))}
+      {!dive.securityNotes.length && (
+        <li class="muted">Nothing obvious jumped out in the trees I scanned.</li>
+      )}
+    </ul>
+  </div>
+
+  <h3 class="sec" id="dd-docs">Documentation</h3>
+  <div class="doclinks">
+    {dive.docs.map((d) => (
+      <a href={d.url} target="_blank" rel="noreferrer">{d.title} ({d.format}) ↗</a>
+    ))}
+    {!dive.docs.length && <span class="muted">No docs repo indexed for this one.</span>}
+  </div>
+
+  <h3 class="sec" style="margin-top:20px">Repositories</h3>
+  <div class="chips">
+    {repos.map((r) => (
+      <a class="cap" href={r.url} target="_blank" rel="noreferrer">{r.name} ↗</a>
+    ))}
+  </div>
+</BaseLayout>

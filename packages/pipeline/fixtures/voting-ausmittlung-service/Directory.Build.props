@@ -1,0 +1,3 @@
+<Project>
+  <Import Project="config/Common.props" />
+</Project>

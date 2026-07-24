@@ -1,0 +1,19 @@
+{
+  "name": "abraxas-labs-explorer",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@9.15.4",
+  "scripts": {
+    "build": "pnpm -r run build",
+    "test": "pnpm -r run test",
+    "lint": "pnpm -r run lint --if-present",
+    "pipeline": "pnpm --filter @abraxas/pipeline start",
+    "pipeline:fixtures": "pnpm --filter @abraxas/pipeline start -- --fixtures --skip-vuln",
+    "dev": "pnpm --filter @abraxas/web dev",
+    "build:web": "pnpm --filter @abraxas/web build",
+    "typecheck": "pnpm -r run typecheck --if-present"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

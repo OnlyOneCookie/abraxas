@@ -1,0 +1,32 @@
+{
+  "name": "@abraxas/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "build": "ASTRO_TELEMETRY_DISABLED=1 astro build",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "typecheck": "astro check",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "lint": "echo \"no lint configured\""
+  },
+  "dependencies": {
+    "@abraxas/schema": "workspace:*",
+    "@astrojs/react": "^4.2.1",
+    "astro": "^5.5.3",
+    "cytoscape": "^3.31.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.1",
+    "@playwright/test": "^1.51.1",
+    "@types/cytoscape": "^3.21.9",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
+}

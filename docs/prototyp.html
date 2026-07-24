@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abraxas GitHub Explorer — Prototype v2</title>
+<style>
+  :root{
+    --bg:#0d1117;--panel:#161b22;--panel2:#1c2230;--border:#30363d;
+    --text:#e6edf3;--muted:#8b949e;--faint:#6e7681;
+    --purple:#a371f7;--purple2:#7c3aed;
+    --service:#f78166;--webapp:#58a6ff;--proto:#3fb950;--docs:#d29922;
+    --library:#a371f7;--app:#39c5cf;--infra:#db61a2;--external:#6e7681;
+    --danger:#f85149;--crit:#f85149;--high:#f0883e;--med:#d29922;--low:#3fb950;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;font-size:14px}
+  a{color:var(--webapp);text-decoration:none}a:hover{text-decoration:underline}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:#0d1117;border:1px solid var(--border);border-radius:4px;padding:1px 4px}
+  .app{display:flex;min-height:100vh}
+  .side{width:214px;flex:0 0 214px;background:var(--panel);border-right:1px solid var(--border);
+    padding:16px 10px;position:sticky;top:0;height:100vh;display:flex;flex-direction:column;gap:4px}
+  .brand{display:flex;align-items:center;gap:9px;padding:4px 8px 12px}
+  .hat{width:26px;height:26px;flex:0 0 26px}
+  .brand b{font-size:15px}.brand span{display:block;color:var(--muted);font-size:11px;font-weight:400}
+  .nav{display:flex;flex-direction:column;gap:2px;margin-top:6px}
+  .nav button{display:flex;align-items:center;gap:9px;background:transparent;border:0;color:var(--muted);
+    text-align:left;padding:9px 10px;border-radius:7px;cursor:pointer;font-size:13.5px;width:100%}
+  .nav button:hover{background:var(--panel2);color:var(--text)}
+  .nav button.active{background:rgba(163,113,247,.14);color:var(--text);box-shadow:inset 2px 0 0 var(--purple)}
+  .nav .ico{width:16px;text-align:center;opacity:.9}
+  .side .foot{margin-top:auto;font-size:11px;color:var(--faint);padding:8px;line-height:1.5}
+  .main{flex:1;min-width:0;display:flex;flex-direction:column}
+  .top{position:sticky;top:0;z-index:20;background:rgba(13,17,23,.85);backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--border);padding:12px 22px;display:flex;align-items:center;gap:14px}
+  .top h1{font-size:16px;margin:0;font-weight:600}
+  .live{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:#3fb950;
+    border:1px solid rgba(63,185,80,.35);background:rgba(63,185,80,.08);padding:3px 8px;border-radius:20px}
+  .dot{width:7px;height:7px;border-radius:50%;background:#3fb950;animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{opacity:.3}50%{opacity:1}100%{opacity:.3}}
+  .spacer{flex:1}
+  .search{background:var(--panel);border:1px solid var(--border);border-radius:7px;color:var(--text);padding:7px 11px;width:210px;font-size:13px}
+  .search:focus{outline:0;border-color:var(--purple)}
+  .lens{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--muted);cursor:pointer;border:1px solid var(--border);padding:6px 11px;border-radius:7px;user-select:none}
+  .lens.on{color:#fff;border-color:var(--danger);background:rgba(248,81,73,.12)}
+  .lens .sw{width:30px;height:16px;border-radius:20px;background:#30363d;position:relative;transition:.2s}
+  .lens .sw::after{content:"";position:absolute;top:2px;left:2px;width:12px;height:12px;border-radius:50%;background:#8b949e;transition:.2s}
+  .lens.on .sw{background:var(--danger)}.lens.on .sw::after{left:16px;background:#fff}
+  .content{padding:22px;max-width:1220px;width:100%}
+  .view{display:none}.view.active{display:block}
+  h2.sec{font-size:15px;margin:2px 0 12px;font-weight:600}
+  h3.blk{font-size:13.5px;margin:20px 0 9px;font-weight:600}
+  .muted{color:var(--muted)}.faint{color:var(--faint)}
+  .prodgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:18px}
+  .card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px}
+  .prod .big{font-size:30px;font-weight:700}.prod .lbl{color:var(--muted);font-size:12.5px;margin-top:2px}
+  .prod .desc{font-size:12px;color:var(--faint);margin-top:8px;line-height:1.5}
+  .stats{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .stat{background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:10px 14px;min-width:92px}
+  .stat b{font-size:20px;display:block}.stat span{font-size:11.5px;color:var(--muted)}
+  .langbar{display:flex;height:8px;border-radius:6px;overflow:hidden;margin:4px 0 20px;border:1px solid var(--border)}
+  .langbar i{display:block;height:100%}
+  .leglang{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:-12px 0 22px}
+  .leglang b{color:var(--text);font-weight:500}
+  .pipe{display:flex;flex-wrap:wrap;margin:6px 0 8px}
+  .pstep{flex:1;min-width:120px;background:var(--panel2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;margin:4px}
+  .pstep .n{font-size:10.5px;color:var(--purple);font-weight:700;letter-spacing:.06em}
+  .pstep .t{font-size:12.5px;margin-top:3px;font-weight:600}
+  .pstep .d{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.45}
+  .dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+  .dcard{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:.15s}
+  .dcard:hover{border-color:var(--purple);transform:translateY(-2px)}
+  .dcard h3{margin:0 0 3px;font-size:14px;display:flex;align-items:center;gap:8px}
+  .dcard .p{font-size:12px;color:var(--muted);line-height:1.5;min-height:34px}
+  .chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+  .chip{font-size:10.5px;padding:2px 7px;border-radius:20px;border:1px solid var(--border);color:var(--muted);background:#0d111799}
+  .tdot{width:8px;height:8px;border-radius:50%;display:inline-block}
+  .sflag{font-size:10px;color:var(--danger);border:1px solid rgba(248,81,73,.4);padding:1px 6px;border-radius:20px;background:rgba(248,81,73,.08)}
+  .arch{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:6px;overflow-x:auto}
+  .arow{display:grid;grid-template-columns:120px 1fr;gap:8px;border-bottom:1px dashed var(--border);padding:10px 6px}
+  .arow:last-child{border-bottom:0}
+  .arow .rl{font-size:11.5px;color:var(--muted);align-self:center;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+  .acells{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;min-width:820px}
+  .acol-h{display:grid;grid-template-columns:120px 1fr;gap:8px;padding:4px 6px 2px}
+  .acolnames{display:grid;grid-template-columns:repeat(9,1fr);gap:6px;min-width:820px}
+  .acolnames div{font-size:10px;color:var(--faint);text-align:center;line-height:1.2;padding-bottom:2px}
+  .node{border:1px solid var(--border);border-radius:6px;padding:5px 6px;font-size:10.5px;cursor:pointer;background:var(--panel2);display:flex;align-items:center;gap:5px;transition:.12s;line-height:1.2}
+  .node:hover{border-color:var(--purple);background:#232a3a}
+  .node .tdot{flex:0 0 8px}
+  .cellwrap{display:flex;flex-direction:column;gap:5px}
+  .graphwrap{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px}
+  .gfilters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+  .gfilters button{background:var(--panel2);border:1px solid var(--border);color:var(--muted);padding:4px 10px;border-radius:20px;font-size:11.5px;cursor:pointer}
+  .gfilters button.on{color:#fff;border-color:var(--purple);background:rgba(163,113,247,.18)}
+  svg{display:block;width:100%;height:auto;touch-action:none}
+  .glabel{font-size:9px;fill:var(--muted);pointer-events:none}
+  .gtip{position:fixed;pointer-events:none;background:#000c;border:1px solid var(--border);border-radius:6px;padding:6px 9px;font-size:11px;max-width:240px;z-index:60;display:none;line-height:1.45}
+  .glegend{display:flex;gap:12px;flex-wrap:wrap;font-size:11px;color:var(--muted);margin-top:8px}
+  .glegend span{display:inline-flex;align-items:center;gap:5px}
+  .tblwrap{background:var(--panel);border:1px solid var(--border);border-radius:10px;overflow:auto}
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th,td{text-align:left;padding:8px 12px;border-bottom:1px solid var(--border)}
+  th{color:var(--muted);font-weight:600;cursor:pointer;user-select:none;position:sticky;top:0;background:var(--panel);font-size:11.5px}
+  th:hover{color:var(--text)}
+  tr:hover td{background:#1c2230}
+  td .ver,.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:11.5px}
+  .real{color:#3fb950}.auto{color:var(--faint)}
+  .btnlink{font-size:11px;border:1px solid var(--border);border-radius:6px;padding:2px 7px;color:var(--muted);cursor:pointer;background:transparent}
+  .btnlink:hover{border-color:var(--purple);color:var(--text)}
+  .note{font-size:11.5px;color:var(--faint);margin-top:8px;line-height:1.5}
+  .warn{background:rgba(240,136,62,.09);border:1px solid rgba(240,136,62,.4);border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.5;margin:10px 0}
+  .warn b{color:var(--high)}
+  .eco{font-size:10px;border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--muted)}
+  .sev{font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px;color:#0d1117}
+  .sev.crit{background:var(--crit)}.sev.high{background:var(--high)}.sev.med{background:var(--med)}.sev.low{background:var(--low)}.sev.none{background:#30363d;color:var(--muted)}
+  .sevstrip{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+  .sevcard{border:1px solid var(--border);border-radius:9px;padding:8px 14px;min-width:92px;background:var(--panel)}
+  .sevcard b{font-size:20px;display:block}.sevcard span{font-size:11px;color:var(--muted)}
+  .subtabs{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 16px;position:sticky;top:52px;background:var(--bg);padding:8px 0;z-index:10}
+  .subtabs a{font-size:12.5px;border:1px solid var(--border);border-radius:20px;padding:5px 12px;color:var(--muted)}
+  .subtabs a:hover{border-color:var(--purple);color:var(--text);text-decoration:none}
+  .ddhero{background:linear-gradient(120deg,#1c2230,#161b22);border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+  .ddhero h2{margin:0 0 6px;font-size:20px}
+  .ddhero p{margin:0;color:var(--muted);font-size:13px;line-height:1.6;max-width:820px}
+  .apps{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .appcard{background:#0d1117;border:1px solid var(--border);border-radius:9px;padding:10px 14px;flex:1;min-width:220px}
+  .appcard b{font-size:13.5px}.appcard .r{font-size:12px;color:var(--muted);margin-top:2px}
+  .appcard .port{font-size:11px;color:var(--webapp)}
+  .stackgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .stackcol h4{margin:0 0 8px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+  .grp{background:var(--panel);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:10px}
+  .grp h4{margin:0 0 8px;font-size:12.5px;display:flex;align-items:center;gap:8px}
+  .cap{font-size:12px;border:1px solid var(--border);border-radius:6px;padding:3px 8px;color:var(--text);background:#0d1117}
+  .cap.two::after{content:" · 2FA";color:var(--high);font-size:10px}
+  .flow{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:10px;overflow-x:auto}
+  .seclist{list-style:none;padding:0;margin:0}
+  .seclist li{padding:8px 0 8px 26px;position:relative;font-size:12.5px;border-bottom:1px solid var(--border);line-height:1.5}
+  .seclist li:last-child{border-bottom:0}
+  .seclist li::before{content:"\1F512";position:absolute;left:0;top:7px;font-size:12px}
+  .doclinks{display:flex;flex-wrap:wrap;gap:8px}
+  .doclinks a{font-size:12px;border:1px solid var(--border);border-radius:6px;padding:6px 10px;color:var(--text)}
+  .doclinks a:hover{border-color:var(--purple);text-decoration:none}
+  .scrim{position:fixed;inset:0;background:#0008;z-index:70;display:none}.scrim.open{display:block}
+  .drawer{position:fixed;top:0;right:0;height:100vh;width:440px;max-width:92vw;background:var(--panel);border-left:1px solid var(--border);z-index:80;transform:translateX(100%);transition:.22s;overflow-y:auto;padding:20px}
+  .drawer.open{transform:translateX(0)}
+  .drawer h3{margin:0 0 2px;font-size:16px;word-break:break-all}
+  .drawer .x{position:absolute;top:16px;right:16px;cursor:pointer;color:var(--muted);font-size:20px;background:0;border:0}
+  .kv{display:grid;grid-template-columns:96px 1fr;gap:6px 10px;font-size:12.5px;margin:14px 0}
+  .kv div:nth-child(odd){color:var(--muted)}
+  .deplist{display:flex;flex-direction:column;gap:6px;margin:6px 0 14px}
+  .depitem{display:flex;justify-content:space-between;gap:8px;background:var(--panel2);border:1px solid var(--border);border-radius:6px;padding:6px 9px;font-size:12px;cursor:pointer}
+  .depitem:hover{border-color:var(--purple)}
+  .drawer .lnks{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .drawer .lnks a{font-size:12px;border:1px solid var(--border);border-radius:6px;padding:5px 10px;color:var(--text)}
+  .drawer .lnks a:hover{border-color:var(--purple);text-decoration:none}
+  .secnote{background:rgba(248,81,73,.08);border:1px solid rgba(248,81,73,.35);border-radius:8px;padding:10px 12px;font-size:12px;margin:6px 0 14px}
+  .secnote b{color:var(--danger)}
+  .h3lbl{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin:16px 0 6px}
+  .cta{display:inline-block;margin-top:14px;background:var(--purple2);color:#fff;border:0;border-radius:7px;padding:9px 14px;font-size:12.5px;cursor:pointer}
+  .cta:hover{background:var(--purple)}
+  body.sec-on .node[data-sec="0"],body.sec-on tr[data-sec="0"]{opacity:.28}
+  body.sec-on .dcard[data-sec="0"]{opacity:.4}
+  body.sec-on .node[data-sec="1"]{border-color:var(--danger)}
+  @media(max-width:820px){.side{display:none}.prodgrid,.stackgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="side">
+    <div class="brand">
+      <svg class="hat" viewBox="0 0 32 32" fill="none"><path d="M4 24c3-2 8-3 12-3s9 1 12 3" stroke="#a371f7" stroke-width="2" stroke-linecap="round"/><path d="M9 22c1-7 3-12 7-12s6 5 7 12" fill="#7c3aed"/><ellipse cx="16" cy="22" rx="8" ry="2.4" fill="#a371f7"/></svg>
+      <div><b>GitHub Explorer</b><span>personal map of abraxas-labs</span></div>
+    </div>
+    <nav class="nav" id="nav">
+      <button data-v="overview" class="active"><span class="ico">◈</span> Overview</button>
+      <button data-v="architecture"><span class="ico">▤</span> Architecture</button>
+      <button data-v="graph"><span class="ico">⧉</span> Project links</button>
+      <button data-v="packages"><span class="ico">⬢</span> Packages &amp; vulns</button>
+      <button data-v="deepdive"><span class="ico">◎</span> Deep dive: Ausmittlung</button>
+    </nav>
+    <div class="foot">Prototype v2 · real data sampled from GitHub on 2026‑07‑24. Production build regenerates automatically.</div>
+  </aside>
+
+  <div class="main">
+    <div class="top">
+      <h1 id="topTitle">Overview</h1>
+      <span class="live"><span class="dot"></span> LIVE · auto‑rebuild</span>
+      <div class="spacer"></div>
+      <input id="search" class="search" placeholder="Search repos, domains…">
+      <div class="lens" id="lens"><span class="sw"></span> Security lens</div>
+    </div>
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <section class="view active" id="v-overview">
+        <div class="prodgrid" id="prodgrid"></div>
+        <div class="stats" id="stats"></div>
+        <div class="langbar" id="langbar"></div>
+        <div class="leglang" id="leglang"></div>
+        <div class="card" style="margin-bottom:20px">
+          <h2 class="sec" style="margin-bottom:4px">How this stays up to date <span class="muted" style="font-weight:400;font-size:12px">— not a snapshot</span></h2>
+          <p class="muted" style="margin:2px 0 8px;font-size:12.5px">A GitHub Action re‑runs nightly and on every push to any <code>abraxas-labs</code> repo. Nightly refresh also re‑scans packages, so newly‑disclosed CVEs surface even when the code hasn't changed.</p>
+          <div class="pipe" id="pipe"></div>
+        </div>
+        <h2 class="sec">Domains &amp; products <span class="muted" style="font-weight:400;font-size:12px">— click any card to drill in</span></h2>
+        <div class="dgrid" id="dgrid"></div>
+      </section>
+
+      <!-- ARCHITECTURE -->
+      <section class="view" id="v-architecture">
+        <h2 class="sec">Layered architecture <span class="muted" style="font-weight:400;font-size:12px">— columns = domains · rows = layers · click a node</span></h2>
+        <div class="acol-h"><div class="rl"></div><div class="acolnames" id="archcols"></div></div>
+        <div class="arch" id="arch"></div>
+        <div class="glegend" id="archlegend" style="margin-top:12px"></div>
+      </section>
+
+      <!-- PROJECT LINKS (graph) -->
+      <section class="view" id="v-graph">
+        <h2 class="sec">Project links <span class="muted" style="font-weight:400;font-size:12px">— repo‑to‑repo wiring · drag nodes · hover to trace · edge labels = resolved versions</span></h2>
+        <div class="gfilters" id="gfilters"></div>
+        <div class="graphwrap">
+          <svg id="graph" viewBox="0 0 1000 720" preserveAspectRatio="xMidYMid meet"></svg>
+          <div class="glegend" id="glegend"></div>
+        </div>
+        <p class="note">These are links <b>between projects</b> (webapp → proto, service → shared lib, domain → domain). Third‑party <b>packages</b> and their vulnerabilities live in the next tab.</p>
+      </section>
+
+      <!-- PACKAGES & VULNS -->
+      <section class="view" id="v-packages">
+        <h2 class="sec">Packages &amp; vulnerabilities <span class="muted" style="font-weight:400;font-size:12px">— third‑party packages per project, scanned for CVE / CVSS</span></h2>
+        <div class="warn"><b>Prototype note.</b> The package names and installed versions below are <b>real</b> (sampled from the manifests). The vulnerability severities are <b>illustrative placeholders</b> to show the UI — the production build runs the real scan (OSV.dev + GitHub Advisory Database) in CI and fills in actual CVE IDs and CVSS scores. No row below asserts a real advisory.</div>
+        <div class="sevstrip" id="sevstrip"></div>
+        <div class="gfilters" id="pkgfilters" style="margin-top:6px"></div>
+        <div class="tblwrap"><table id="pkgtable"><thead></thead><tbody></tbody></table></div>
+        <p class="note" id="pkgnote"></p>
+        <h3 class="blk">How the real scan works</h3>
+        <div class="pipe" id="scanpipe"></div>
+      </section>
+
+      <!-- DEEP DIVE -->
+      <section class="view" id="v-deepdive">
+        <div class="subtabs">
+          <a href="#dd-what">What it is</a><a href="#dd-api">API surface</a><a href="#dd-data">Data model</a><a href="#dd-flow">Flow</a><a href="#dd-sec">Security</a><a href="#dd-docs">Docs</a>
+        </div>
+        <div id="deepdive"></div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer"><button class="x" id="drawerX">×</button><div id="drawerBody"></div></aside>
+<div class="gtip" id="gtip"></div>
+
+<script>
+/* ============ DATA (real metadata sampled from github.com/abraxas-labs, 2026-07-24) ============ */
+var TYPE_COLOR={service:'#f78166',webapp:'#58a6ff',proto:'#3fb950',docs:'#d29922',library:'#a371f7',app:'#39c5cf',infra:'#db61a2',external:'#6e7681'};
+var TYPE_LABEL={service:'Service (.NET)',webapp:'Web app (Angular)',proto:'Proto / gRPC',docs:'Docs',library:'Shared library',app:'Client app',infra:'Infrastructure',external:'External dep'};
+var DOMAINS={
+  basis:{title:'Basis',product:'VOTING',purpose:'Base & master data, configuration, permissions. The foundation other domains build on.',sec:true},
+  stimmregister:{title:'Stimmregister',product:'VOTING',purpose:'Voter register — incl. e-voting and citizen e-service variants.',sec:true},
+  ausmittlung:{title:'Ausmittlung',product:'VOTING',purpose:'Vote counting & result tabulation. Integrity-critical.',sec:true},
+  wahlvorschlag:{title:'Wahlvorschlag',product:'VOTING',purpose:'Candidate lists / electoral proposals.',sec:false},
+  'su-online':{title:'Stimmunterlagen Online',product:'VOTING',purpose:'Voting materials, online generation & delivery.',sec:false},
+  'su-offline':{title:'Stimmunterlagen Offline',product:'VOTING',purpose:'Offline client for producing voting materials.',sec:false},
+  ecollecting:{title:'E-Collecting',product:'VOTING',purpose:'Digital signature collection for initiatives & referenda.',sec:true},
+  shared:{title:'Shared libraries',product:'VOTING',purpose:'Cross-domain .NET + Angular libraries and validation contracts.',sec:false},
+  per:{title:'PER Auskunft',product:'PER',purpose:'Person-register query product.',sec:false},
+  infra:{title:'Infrastructure',product:'Infra',purpose:'Reusable infrastructure modules (Terraform).',sec:false}
+};
+var REPOS=[
+ {n:'voting-ausmittlung-service',d:'ausmittlung',t:'service',lang:'C#',desc:'VOTING Ausmittlung Service (backend). .NET 8, gRPC, event-sourced, PKCS#11/HSM signing.',pushed:'2026-06-19',stars:3,forks:2,sec:true,notes:['Result integrity','Event signatures (PKCS#11/HSM)'],dd:true},
+ {n:'voting-ausmittlung-webapp',d:'ausmittlung',t:'webapp',lang:'TypeScript',desc:'VOTING Ausmittlung Web Application. Two apps: Erfassung + Monitoring.',pushed:'2026-06-19',stars:1,forks:1,sec:true,notes:['OTP/2FA auth','Result monitoring UI'],dd:true},
+ {n:'voting-ausmittlung-proto',d:'ausmittlung',t:'proto',lang:'Shell',desc:'VOTING Ausmittlung gRPC/protobuf contracts. Embeds validation-proto submodule.',pushed:'2026-06-18',stars:1,forks:0,sec:true,notes:['Contract = validation/trust boundary']},
+ {n:'voting-ausmittlung-docs',d:'ausmittlung',t:'docs',lang:'Other',desc:'Architecture, security policy, calculation methods, data protection docs.',pushed:'2026-03-25',stars:6,forks:1,sec:false,notes:[]},
+ {n:'voting-basis-service',d:'basis',t:'service',lang:'C#',desc:'VOTING Basis Service — master data & config backend.',pushed:'2026-06-18',stars:0,forks:0,sec:true,notes:['Permissions & master data — trust foundation']},
+ {n:'voting-basis-webapp',d:'basis',t:'webapp',lang:'TypeScript',desc:'VOTING Basis Web Application.',pushed:'2026-06-18',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-basis-proto',d:'basis',t:'proto',lang:'Shell',desc:'VOTING Basis gRPC/protobuf contracts.',pushed:'2026-06-18',stars:0,forks:0,sec:true,notes:['Contract = validation/trust boundary']},
+ {n:'voting-stimmregister-service',d:'stimmregister',t:'service',lang:'C#',desc:'VOTING Stimmregister Service — voter register backend.',pushed:'2026-07-22',stars:0,forks:0,sec:true,notes:['Voter register accuracy']},
+ {n:'voting-stimmregister-webapp',d:'stimmregister',t:'webapp',lang:'TypeScript',desc:'VOTING Stimmregister Web Application.',pushed:'2026-07-02',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmregister-proto',d:'stimmregister',t:'proto',lang:'Shell',desc:'VOTING Stimmregister gRPC/protobuf contracts.',pushed:'2026-07-22',stars:0,forks:0,sec:true,notes:['Contract = validation/trust boundary']},
+ {n:'voting-stimmregister-evoting',d:'stimmregister',t:'service',lang:'C#',desc:'VOTING Stimmregister E-Voting integration.',pushed:'2026-06-26',stars:0,forks:0,sec:true,notes:['E-voting integration surface']},
+ {n:'voting-stimmregister-eservice',d:'stimmregister',t:'service',lang:'C#',desc:'VOTING Stimmregister E-Service (citizen-facing).',pushed:'2025-02-07',stars:0,forks:0,sec:true,notes:['Citizen-facing endpoint']},
+ {n:'voting-stimmregister-docs',d:'stimmregister',t:'docs',lang:'Other',desc:'Architecture documentation for VOTING Stimmregister.',pushed:'2026-03-26',stars:1,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-online-service',d:'su-online',t:'service',lang:'C#',desc:'VOTING Stimmunterlagen Online Service.',pushed:'2026-07-23',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-online-webapp',d:'su-online',t:'webapp',lang:'TypeScript',desc:'VOTING Stimmunterlagen Online Web Application.',pushed:'2026-07-23',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-online-proto',d:'su-online',t:'proto',lang:'Shell',desc:'VOTING Stimmunterlagen Online gRPC/protobuf contracts.',pushed:'2026-07-14',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-online-docs',d:'su-online',t:'docs',lang:'Other',desc:'Architecture documentation for VOTING Stimmunterlagen Online.',pushed:'2026-03-26',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-offline-client-app',d:'su-offline',t:'app',lang:'C#',desc:'VOTING Stimmunterlagen Offline Client App.',pushed:'2026-06-16',stars:1,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-offline-client-shared',d:'su-offline',t:'library',lang:'C#',desc:'Shared code for the offline client.',pushed:'2026-06-16',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-stimmunterlagen-offline-client-docs',d:'su-offline',t:'docs',lang:'PowerShell',desc:'Documentation for the offline client.',pushed:'2026-07-06',stars:1,forks:0,sec:false,notes:[]},
+ {n:'voting-ecollecting-service',d:'ecollecting',t:'service',lang:'C#',desc:'VOTING E-Collecting Service.',pushed:'2026-07-22',stars:1,forks:1,sec:true,notes:['Signature collection integrity']},
+ {n:'voting-ecollecting-webapp',d:'ecollecting',t:'webapp',lang:'TypeScript',desc:'VOTING E-Collecting Web Application.',pushed:'2026-07-22',stars:0,forks:1,sec:false,notes:[]},
+ {n:'voting-ecollecting-proto',d:'ecollecting',t:'proto',lang:'Shell',desc:'VOTING E-Collecting gRPC/protobuf contracts.',pushed:'2026-07-22',stars:0,forks:1,sec:true,notes:['Contract = validation/trust boundary']},
+ {n:'voting-ecollecting-citizen-eservice',d:'ecollecting',t:'service',lang:'C#',desc:'VOTING E-Collecting Citizen E-Service.',pushed:'2026-07-10',stars:0,forks:1,sec:true,notes:['Citizen-facing digital signature collection']},
+ {n:'voting-ecollecting-docs',d:'ecollecting',t:'docs',lang:'HTML',desc:'Architecture documentation for VOTING E-Collecting.',pushed:'2026-07-10',stars:1,forks:1,sec:false,notes:[]},
+ {n:'voting-wahlvorschlag-service',d:'wahlvorschlag',t:'service',lang:'C#',desc:'VOTING Wahlvorschlag Service.',pushed:'2026-05-07',stars:0,forks:1,sec:false,notes:[]},
+ {n:'voting-wahlvorschlag-webapp',d:'wahlvorschlag',t:'webapp',lang:'TypeScript',desc:'VOTING Wahlvorschlag Web Application.',pushed:'2026-05-13',stars:0,forks:1,sec:false,notes:[]},
+ {n:'voting-wahlvorschlag-docs',d:'wahlvorschlag',t:'docs',lang:'Other',desc:'Architecture documentation for VOTING Wahlvorschlag.',pushed:'2026-04-22',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-library-dotnet',d:'shared',t:'library',lang:'C#',desc:'Shared .NET libraries (Voting.Lib.*) for the VOTING suite.',pushed:'2026-07-13',stars:2,forks:1,sec:false,notes:[]},
+ {n:'voting-library-angular',d:'shared',t:'library',lang:'TypeScript',desc:'Shared Angular library, published as @abraxas/voting-lib.',pushed:'2026-07-10',stars:0,forks:0,sec:false,notes:[]},
+ {n:'voting-library-validation-proto',d:'shared',t:'proto',lang:'Shell',desc:'Shared validation contracts (protobuf). Embedded as a submodule in each proto repo.',pushed:'2026-04-01',stars:0,forks:0,sec:true,notes:['Shared input-validation contracts']},
+ {n:'per-auskunft-webapp',d:'per',t:'webapp',lang:'TypeScript',desc:'PER Auskunft Web Application.',pushed:'2026-03-26',stars:0,forks:0,sec:false,notes:[]},
+ {n:'per-auskunft-docs',d:'per',t:'docs',lang:'Other',desc:'Architecture documentation for PER Auskunft.',pushed:'2026-03-26',stars:0,forks:0,sec:false,notes:[]},
+ {n:'terraform-citrixdaas-citrix-daas-published-applications',d:'infra',t:'infra',lang:'HCL',desc:'Terraform module: Citrix DaaS published applications (MIT).',pushed:'2025-10-21',stars:2,forks:0,sec:false,notes:[]},
+ {n:'@abraxas/base-components',d:'shared',t:'external',lang:'—',desc:'Abraxas design-system components consumed by the Angular web apps.',pushed:'—',stars:null,forks:null,sec:false,notes:[],external:true}
+];
+var BY_NAME={};REPOS.forEach(function(r){BY_NAME[r.n]=r;});
+var LANG_COLOR={'C#':'#8250df','TypeScript':'#58a6ff','Shell':'#3fb950','HTML':'#e34c26','PowerShell':'#0f6dbe','HCL':'#844fba','Other':'#8b949e','—':'#484f58'};
+
+var PROTO_OF={ausmittlung:'voting-ausmittlung-proto',basis:'voting-basis-proto',stimmregister:'voting-stimmregister-proto','su-online':'voting-stimmunterlagen-online-proto',ecollecting:'voting-ecollecting-proto'};
+var SERVICE_OF={ausmittlung:'voting-ausmittlung-service',basis:'voting-basis-service',stimmregister:'voting-stimmregister-service','su-online':'voting-stimmunterlagen-online-service',ecollecting:'voting-ecollecting-service',wahlvorschlag:'voting-wahlvorschlag-service'};
+var REAL={'voting-ausmittlung-webapp|voting-ausmittlung-proto':'1.153.0','voting-ausmittlung-webapp|voting-library-angular':'5.17.8','voting-ausmittlung-webapp|@abraxas/base-components':'21.30.0','voting-ausmittlung-service|voting-ausmittlung-proto':'1.153.0'};
+var EDGES=[];
+function addEdge(s,t,kind){if(!BY_NAME[t]||s===t)return;var real=REAL[s+'|'+t];EDGES.push({s:s,t:t,kind:kind,ver:real||null,real:!!real});}
+REPOS.forEach(function(r){
+  if(r.external)return;var proto=PROTO_OF[r.d];
+  if(r.t==='webapp'){if(proto)addEdge(r.n,proto,'proto');addEdge(r.n,'voting-library-angular','lib');addEdge(r.n,'@abraxas/base-components','external');}
+  if(r.t==='service'){if(proto&&r.n===SERVICE_OF[r.d])addEdge(r.n,proto,'proto');addEdge(r.n,'voting-library-dotnet','lib');}
+  if(r.t==='proto'&&r.n!=='voting-library-validation-proto')addEdge(r.n,'voting-library-validation-proto','validation');
+});
+addEdge('voting-stimmregister-evoting','voting-stimmregister-service','integration');
+addEdge('voting-stimmregister-eservice','voting-stimmregister-service','integration');
+addEdge('voting-ecollecting-citizen-eservice','voting-ecollecting-service','integration');
+addEdge('voting-stimmunterlagen-offline-client-app','voting-stimmunterlagen-offline-client-shared','lib');
+addEdge('voting-stimmunterlagen-offline-client-shared','voting-library-dotnet','lib');
+addEdge('voting-stimmunterlagen-offline-client-app','voting-stimmunterlagen-online-service','integration');
+[['ausmittlung','basis'],['ausmittlung','stimmregister'],['ecollecting','basis'],['ecollecting','stimmregister'],['wahlvorschlag','basis'],['su-online','basis'],['su-online','stimmregister']].forEach(function(p){addEdge(SERVICE_OF[p[0]],SERVICE_OF[p[1]],'domain');});
+function depsOut(n){return EDGES.filter(function(e){return e.s===n;});}
+function depsIn(n){return EDGES.filter(function(e){return e.t===n;});}
+
+/* ---- Packages (real installed versions; vuln severities are ILLUSTRATIVE placeholders) ---- */
+var PACKAGES={
+ 'voting-ausmittlung-webapp':{eco:'npm',list:[
+   {n:'@angular/core',v:'21.2.8'},{n:'@angular/material',v:'21.2.6'},{n:'@angular/router',v:'21.2.8'},
+   {n:'rxjs',v:'7.8.2'},{n:'grpc-web',v:'1.5.0'},{n:'google-protobuf',v:'3.21.4'},
+   {n:'@ngx-translate/core',v:'17.0.0'},{n:'otplib',v:'13.4.0'},{n:'moment',v:'2.30.1'},
+   {n:'zone.js',v:'0.15.1'},{n:'ngx-drag-drop',v:'21.0.0'},{n:'deepmerge',v:'4.3.1'},{n:'tslib',v:'2.8.1'},
+   {n:'@abraxas/base-components',v:'21.30.0'},{n:'@abraxas/voting-lib',v:'5.17.8'},{n:'@abraxas/voting-ausmittlung-service-proto',v:'1.153.0'},
+   {n:'typescript',v:'5.9.3',dev:true},{n:'eslint',v:'9.39.4',dev:true},{n:'prettier',v:'3.8.1',dev:true}
+ ]},
+ 'voting-ausmittlung-service':{eco:'nuget',list:[
+   {n:'Grpc.AspNetCore',v:'central'},{n:'Grpc.AspNetCore.Web',v:'central'},{n:'Grpc.AspNetCore.Server.Reflection',v:'central'},
+   {n:'Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore',v:'8.0.2'},
+   {n:'Microsoft.Extensions.Hosting.Abstractions',v:'8.0.0'},
+   {n:'prometheus-net.AspNetCore',v:'8.2.1'},{n:'prometheus-net.AspNetCore.Grpc',v:'8.2.1'},
+   {n:'Serilog.AspNetCore',v:'8.0.1'},{n:'Serilog.Expressions',v:'4.0.0'},
+   {n:'Voting.Lib.Grpc',v:'central'},{n:'Voting.Lib.Rest',v:'central'},{n:'Voting.Lib.Prometheus',v:'central'},
+   {n:'Voting.Ausmittlung.Service.Proto',v:'1.153.0'}
+ ]}
+};
+// illustrative severity distribution keyed by package name (DEMO ONLY — not real advisories)
+var DEMO_SEV={'moment':'med','google-protobuf':'low','zone.js':'low','Serilog.Expressions':'low'};
+
+/* ---- Ausmittlung deep-dive (derived from proto CHANGELOG v1.153.0, docs repo, manifests) ---- */
+var AUS={
+ apps:[{n:'Erfassung',r:'Data entry by the counting circles (Gemeinden)',port:'4300'},{n:'Monitoring',r:'Oversight & audit by the canton / authority',port:'4400'}],
+ stack:{Backend:['.NET 8 (SDK 8.0.100)','Grpc.AspNetCore','EF Core','Serilog','Prometheus','PKCS#11 / HSM','Voting.Lib.*','Event sourcing'],
+        Frontend:['Angular 21','TypeScript 5.9','gRPC-web','Angular Material','ngx-translate (i18n)','otplib (2FA/OTP)'],
+        Contracts:['Protobuf / gRPC','Proto-level validators','validation-proto submodule','eCH-0110 (Swiss)']},
+ caps:[
+  {g:'Result submission workflow',items:[['Submission finished',1],['Audited tentatively',1],['Correction finished',0],['Reset to submission finished',0],['Flag for correction',0],['Ready for correction',0]]},
+  {g:'Result bundles',items:[['Create / review bundles',0],['Set multiple bundles to review',0],['Ballot modification users',0],['Async bundle review exports',0]]},
+  {g:'Import',items:[['Result import',0],['eCounting import & write-ins',0],['Empty counting circles',0],['eCH-0110 count of voters',0]]},
+  {g:'Exports',items:[['Protocol exports',0],['Export templates',0],['Result export configuration',0]]},
+  {g:'Elections & calculation',items:[['Majority / proportional / secondary',0],['Double-proportional apportionment',0],['Mandate distribution',0],['Lot decisions',0]]},
+  {g:'Security & access',items:[['Permission service',0],['Second-factor transaction (QR / OTP)',1],['Event signatures',1]]}
+ ],
+ entities:[
+  {g:'Contest & political business',items:['Contest','Vote','MajorityElection','ProportionalElection','SecondaryMajorityElection','PoliticalBusinessUnion']},
+  {g:'Territory',items:['DomainOfInfluence','Canton / CantonSettings','CountingCircle','CountingCircleDetails','CountingCircleElectorate','CountingMachine']},
+  {g:'Results & ballots',items:['Result / EndResult','ResultOverview','Ballot','BallotBundle','BallotGroup','CandidateResult','LotDecision','Write-in']},
+  {g:'Exports & integrity',items:['ProtocolExport','ExportTemplate','ResultExportConfiguration','SecondFactorTransaction','EventSignature (public key)']}
+ ],
+ security:['Event signatures — a signed, append-only event log gives an integrity-protected, non-repudiable audit trail of the count.',
+   'PKCS#11 / HSM — signing keys are held in a hardware security module (the service ships pkcs11 binaries).',
+   'MFA / 2FA (OTP) — required on sensitive state transitions (submission finished, audited tentatively).',
+   'Proto-level input validation — request models carry validation rules at the contract boundary.',
+   'Role separation — Erfassung (entry) vs Monitoring (oversight) enforced by an authorization model.',
+   'Public bug-bounty program + published exclusion list of known items.'],
+ docs:['Domain Concept','Building-Block View','Authorization Model','Authentication Model','Transport Security','Event Signature','Calculation Methods','Data Protection','Glossary'],
+ flow:{
+  lanes:['Erfassung UI','Ausmittlung Service','Basis','Stimmregister','HSM · PKCS#11','Monitoring UI'],
+  steps:[
+   {f:0,t:1,l:'Load contest & counting circle'},
+   {f:1,t:2,l:'Master data (contest, DoI, circles)'},
+   {f:1,t:3,l:'Count of voters (eCH-0110)'},
+   {f:0,t:1,l:'Enter results → validations'},
+   {f:0,t:1,l:'Submit — Submission finished',s:1},
+   {f:1,t:4,l:'Sign event',s:1},
+   {f:1,t:1,l:'Append signed event (event store)',self:1,s:1},
+   {f:5,t:1,l:'Audited tentatively / plausibilise',s:1},
+   {f:1,t:4,l:'Sign event',s:1},
+   {f:1,t:5,l:'Publish results · protocol export'}
+  ]
+ }
+};
+
+var GH='https://github.com/abraxas-labs/';
+function ghUrl(r){return r.external?'https://github.com/abraxas-labs':GH+r.n;}
+function docsRepoUrl(r){var m={ausmittlung:'voting-ausmittlung-docs',stimmregister:'voting-stimmregister-docs','su-online':'voting-stimmunterlagen-online-docs','su-offline':'voting-stimmunterlagen-offline-client-docs',ecollecting:'voting-ecollecting-docs',wahlvorschlag:'voting-wahlvorschlag-docs',per:'per-auskunft-docs'};return m[r.d]?GH+m[r.d]:null;}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e;}
+function tdot(t){return '<span class="tdot" style="background:'+(TYPE_COLOR[t]||'#888')+'"></span>';}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+/* ================= OVERVIEW ================= */
+function renderOverview(){
+  var real=REPOS.filter(function(r){return !r.external;});
+  var prods={VOTING:{c:0,d:'Swiss election & e-voting management suite — the bulk of the org.'},PER:{c:0,d:'Person-register query product.'},Infra:{c:0,d:'Reusable infrastructure modules.'}};
+  real.forEach(function(r){prods[DOMAINS[r.d].product].c++;});
+  var pg=document.getElementById('prodgrid');pg.innerHTML='';
+  Object.keys(prods).forEach(function(k){pg.appendChild(el('div','card prod','<div class="big">'+prods[k].c+'</div><div class="lbl">'+k+' · repositories</div><div class="desc">'+prods[k].d+'</div>'));});
+  var doms={};real.forEach(function(r){doms[r.d]=1;});
+  var stats=[['34','repositories'],[Object.keys(doms).length,'domains'],['4','component types'],['.NET 8','backend'],['Angular 21','frontend'],['gRPC','contracts']];
+  var sc=document.getElementById('stats');sc.innerHTML='';stats.forEach(function(s){sc.appendChild(el('div','stat','<b>'+s[0]+'</b><span>'+s[1]+'</span>'));});
+  var lc={};real.forEach(function(r){lc[r.lang]=(lc[r.lang]||0)+1;});
+  var total=real.length,bar=document.getElementById('langbar'),leg=document.getElementById('leglang');bar.innerHTML='';leg.innerHTML='';
+  Object.keys(lc).sort(function(a,b){return lc[b]-lc[a];}).forEach(function(l){
+    var i=el('i');i.style.width=(lc[l]/total*100)+'%';i.style.background=LANG_COLOR[l]||'#888';i.title=l+' — '+lc[l];bar.appendChild(i);
+    leg.appendChild(el('span',null,'<span class="tdot" style="background:'+(LANG_COLOR[l]||'#888')+'"></span> <b>'+l+'</b> '+lc[l]));
+  });
+  var steps=[['01','Trigger','Nightly cron or run by hand'],['02','Collect','Public repos + manifests'],['03','Analyze','Links, packages → OSV'],['04','data.json','Snapshot the site builds from'],['05','Deploy','GitHub Pages']];
+  var pipe=document.getElementById('pipe');pipe.innerHTML='';steps.forEach(function(s){pipe.appendChild(el('div','pstep','<div class="n">'+s[0]+'</div><div class="t">'+s[1]+'</div><div class="d">'+s[2]+'</div>'));});
+  var dg=document.getElementById('dgrid');dg.innerHTML='';
+  Object.keys(DOMAINS).forEach(function(id){
+    var dm=DOMAINS[id],rs=real.filter(function(r){return r.d===id;});if(!rs.length)return;
+    var c=el('div','dcard');c.dataset.sec=dm.sec?1:0;
+    var types={};rs.forEach(function(r){types[r.t]=(types[r.t]||0)+1;});
+    var chips=Object.keys(types).map(function(t){return '<span class="chip">'+tdot(t)+' '+t+' ×'+types[t]+'</span>';}).join('');
+    c.innerHTML='<h3>'+dm.title+(dm.sec?' <span class="sflag">security</span>':'')+(id==='ausmittlung'?' <span class="chip" style="border-color:var(--purple);color:var(--purple)">deep dive ▸</span>':'')+'</h3><div class="p">'+dm.purpose+'</div><div class="chips">'+chips+'</div><div class="muted" style="font-size:11px;margin-top:10px">'+rs.length+' repos · '+dm.product+'</div>';
+    c.onclick=function(){ if(id==='ausmittlung'){show('deepdive');} else {openDomain(id);} };
+    dg.appendChild(c);
+  });
+}
+
+/* ================= ARCHITECTURE ================= */
+var ARCH_DOMAINS=['basis','stimmregister','ausmittlung','wahlvorschlag','su-online','su-offline','ecollecting','shared','per'];
+var LAYERS=[['Frontend',['webapp']],['Contracts',['proto']],['Backend',['service','app']],['Shared / Docs',['library','docs','external']]];
+function renderArch(){
+  var cols=document.getElementById('archcols');cols.innerHTML='';ARCH_DOMAINS.forEach(function(d){cols.appendChild(el('div',null,DOMAINS[d].title));});
+  var arch=document.getElementById('arch');arch.innerHTML='';
+  LAYERS.forEach(function(L){
+    var row=el('div','arow');row.appendChild(el('div','rl',L[0]));var cells=el('div','acells');
+    ARCH_DOMAINS.forEach(function(d){
+      var wrap=el('div','cellwrap');
+      REPOS.filter(function(r){return r.d===d&&L[1].indexOf(r.t)>=0;}).forEach(function(r){
+        var node=el('div','node');node.dataset.sec=r.sec?1:0;node.innerHTML=tdot(r.t)+'<span>'+shortName(r)+'</span>';node.title=r.n;node.onclick=function(){openRepo(r.n);};wrap.appendChild(node);
+      });
+      cells.appendChild(wrap);
+    });
+    row.appendChild(cells);arch.appendChild(row);
+  });
+  var lg=document.getElementById('archlegend');lg.innerHTML='';Object.keys(TYPE_LABEL).forEach(function(t){lg.appendChild(el('span',null,tdot(t)+' '+TYPE_LABEL[t]));});
+}
+function shortName(r){if(r.external)return 'base-components';var s=r.n.replace('voting-','').replace('per-auskunft-','per-');s=s.replace('stimmunterlagen-online-','su-online-').replace('stimmunterlagen-offline-client-','offline-');return s;}
+
+/* ================= PROJECT LINKS GRAPH ================= */
+var GN={},svg=document.getElementById('graph'),SVGNS='http://www.w3.org/2000/svg',activeFilter='all';
+function seed(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function layoutGraph(){
+  var rnd=seed(42),cx=500,cy=360;
+  var clusters=['basis','stimmregister','ausmittlung','ecollecting','su-online','su-offline','wahlvorschlag','per','infra'];
+  var centers={};clusters.forEach(function(d,i){var a=(i/clusters.length)*Math.PI*2-Math.PI/2;centers[d]={x:cx+Math.cos(a)*310,y:cy+Math.sin(a)*250};});
+  centers['shared']={x:cx,y:cy};
+  REPOS.forEach(function(r){var c=centers[r.d]||{x:cx,y:cy};var j=r.d==='shared'?90:66;GN[r.n]={x:c.x+(rnd()-.5)*j*2,y:c.y+(rnd()-.5)*j*2,r:r};});
+  var names=REPOS.map(function(r){return r.n;});
+  for(var it=0;it<160;it++){
+    for(var i=0;i<names.length;i++)for(var j=i+1;j<names.length;j++){var a=GN[names[i]],b=GN[names[j]],dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy)||1;if(d<70){var f=(70-d)/d*.5;a.x+=dx*f;a.y+=dy*f;b.x-=dx*f;b.y-=dy*f;}}
+    EDGES.forEach(function(e){var a=GN[e.s],b=GN[e.t];if(!a||!b)return;var dx=b.x-a.x,dy=b.y-a.y,d=Math.sqrt(dx*dx+dy*dy)||1,f=(d-150)/d*.02;a.x+=dx*f;a.y+=dy*f;b.x-=dx*f;b.y-=dy*f;});
+    names.forEach(function(n){var g=GN[n];g.x=Math.max(40,Math.min(960,g.x));g.y=Math.max(34,Math.min(690,g.y));});
+  }
+}
+function renderGraph(){
+  if(!Object.keys(GN).length)layoutGraph();
+  svg.innerHTML='';var gE=document.createElementNS(SVGNS,'g'),gN=document.createElementNS(SVGNS,'g');svg.appendChild(gE);svg.appendChild(gN);
+  var edgeEls=[];
+  EDGES.forEach(function(e){var a=GN[e.s],b=GN[e.t];if(!a||!b)return;
+    var line=document.createElementNS(SVGNS,'line');line.setAttribute('stroke',e.real?'#3fb950':'#30363d');line.setAttribute('stroke-width',e.real?'2':'1');line.setAttribute('opacity',e.real?'.9':'.5');gE.appendChild(line);
+    var lbl=null;if(e.ver){lbl=document.createElementNS(SVGNS,'text');lbl.setAttribute('class','glabel');lbl.setAttribute('fill','#3fb950');lbl.textContent=e.ver;gE.appendChild(lbl);}
+    e._line=line;e._lbl=lbl;edgeEls.push(e);
+  });
+  function place(e){var a=GN[e.s],b=GN[e.t];e._line.setAttribute('x1',a.x);e._line.setAttribute('y1',a.y);e._line.setAttribute('x2',b.x);e._line.setAttribute('y2',b.y);if(e._lbl){e._lbl.setAttribute('x',(a.x+b.x)/2);e._lbl.setAttribute('y',(a.y+b.y)/2-2);}}
+  edgeEls.forEach(place);
+  REPOS.forEach(function(r){var g=GN[r.n];if(!g)return;
+    var grp=document.createElementNS(SVGNS,'g');grp.style.cursor='pointer';
+    var c=document.createElementNS(SVGNS,'circle');var rad=(r.t==='library'||(r.t==='proto'&&r.d==='shared'))?11:(r.external?9:8);
+    c.setAttribute('r',rad);c.setAttribute('fill',TYPE_COLOR[r.t]);c.setAttribute('stroke',r.sec?'#f85149':'#0d1117');c.setAttribute('stroke-width',r.sec?'2':'1.5');
+    var t=document.createElementNS(SVGNS,'text');t.setAttribute('class','glabel');t.setAttribute('text-anchor','middle');t.setAttribute('dy','-12');t.textContent=shortName(r);
+    grp.appendChild(c);grp.appendChild(t);grp.setAttribute('transform','translate('+g.x+','+g.y+')');gN.appendChild(grp);g._grp=grp;
+    grp.addEventListener('mouseenter',function(ev){hl(r.n,true);showTip(ev,r);});
+    grp.addEventListener('mousemove',moveTip);grp.addEventListener('mouseleave',function(){hl(r.n,false);hideTip();});
+    grp.addEventListener('click',function(){openRepo(r.n);});
+    grp.addEventListener('pointerdown',function(ev){ev.preventDefault();grp.setPointerCapture(ev.pointerId);
+      function mv(e2){var p=svgPoint(e2);g.x=p.x;g.y=p.y;grp.setAttribute('transform','translate('+g.x+','+g.y+')');edgeEls.forEach(function(e){if(e.s===r.n||e.t===r.n)place(e);});}
+      function up(){grp.releasePointerCapture(ev.pointerId);grp.removeEventListener('pointermove',mv);grp.removeEventListener('pointerup',up);}
+      grp.addEventListener('pointermove',mv);grp.addEventListener('pointerup',up);});
+  });
+  window._edgeEls=edgeEls;applyFilter();
+}
+function svgPoint(ev){var p=svg.createSVGPoint();p.x=ev.clientX;p.y=ev.clientY;return p.matrixTransform(svg.getScreenCTM().inverse());}
+function hl(name,on){
+  var nb={};if(on){EDGES.forEach(function(e){if(e.s===name)nb[e.t]=1;if(e.t===name)nb[e.s]=1;});nb[name]=2;}
+  REPOS.forEach(function(r){var g=GN[r.n];if(!g||!g._grp)return;g._grp.style.opacity=!on?1:(nb[r.n]?1:.15);});
+  window._edgeEls&&window._edgeEls.forEach(function(e){if(!on){e._line.setAttribute('opacity',e.real?.9:.5);e._line.setAttribute('stroke',e.real?'#3fb950':'#30363d');if(e._lbl)e._lbl.setAttribute('opacity',1);}else{var hit=e.s===name||e.t===name;e._line.setAttribute('opacity',hit?1:.06);e._line.setAttribute('stroke',hit?'#a371f7':(e.real?'#3fb950':'#30363d'));if(e._lbl)e._lbl.setAttribute('opacity',hit?1:.1);}});
+}
+function applyFilter(){
+  REPOS.forEach(function(r){var g=GN[r.n];if(!g||!g._grp)return;var show=activeFilter==='all'||r.d===activeFilter||(activeFilter==='shared'&&(r.d==='shared'||r.external));g._grp.style.display=show?'':'none';});
+  window._edgeEls&&window._edgeEls.forEach(function(e){var show=activeFilter==='all'||BY_NAME[e.s].d===activeFilter||BY_NAME[e.t].d===activeFilter;e._line.style.display=show?'':'none';if(e._lbl)e._lbl.style.display=show?'':'none';});
+}
+function renderGraphFilters(){
+  var f=document.getElementById('gfilters');f.innerHTML='';
+  var opts=[['all','All']].concat(['basis','stimmregister','ausmittlung','ecollecting','su-online','su-offline','wahlvorschlag','shared','per'].map(function(d){return [d,DOMAINS[d].title];}));
+  opts.forEach(function(o){var b=el('button',o[0]===activeFilter?'on':'',o[1]);b.onclick=function(){activeFilter=o[0];[].forEach.call(f.children,function(c){c.className=(c===b?'on':'');});applyFilter();};f.appendChild(b);});
+  var lg=document.getElementById('glegend');lg.innerHTML='<span><span class="tdot" style="background:#f85149"></span> security-critical (red ring)</span><span><span style="display:inline-block;width:16px;height:2px;background:#3fb950"></span> sampled real version</span>';
+  Object.keys(TYPE_LABEL).forEach(function(t){lg.appendChild(el('span',null,tdot(t)+' '+TYPE_LABEL[t]));});
+}
+var tip=document.getElementById('gtip');
+function showTip(ev,r){tip.style.display='block';tip.innerHTML='<b>'+r.n+'</b><br>'+TYPE_LABEL[r.t]+' · '+r.lang+(r.sec?'<br><span style="color:#f85149">● security-critical</span>':'')+'<br><span class="faint">'+depsOut(r.n).length+' out · '+depsIn(r.n).length+' in</span>';moveTip(ev);}
+function moveTip(ev){tip.style.left=(ev.clientX+14)+'px';tip.style.top=(ev.clientY+14)+'px';}
+function hideTip(){tip.style.display='none';}
+
+/* ================= PACKAGES & VULNS ================= */
+var pkgProject='voting-ausmittlung-webapp',pkgSort='n',pkgDir=1;
+function renderPackages(){
+  var f=document.getElementById('pkgfilters');f.innerHTML='';
+  Object.keys(PACKAGES).forEach(function(p){var b=el('button',p===pkgProject?'on':'',p+' <span class="eco">'+PACKAGES[p].eco+'</span>');b.onclick=function(){pkgProject=p;renderPackages();};f.appendChild(b);});
+  var data=PACKAGES[pkgProject],list=data.list.slice();
+  // severity summary (illustrative)
+  var counts={crit:0,high:0,med:0,low:0};list.forEach(function(p){var s=DEMO_SEV[p.n];if(s&&counts[s]!=null)counts[s]++;});
+  var ss=document.getElementById('sevstrip');ss.innerHTML='';
+  [['crit','Critical'],['high','High'],['med','Medium'],['low','Low']].forEach(function(k){ss.appendChild(el('div','sevcard','<b class="'+(counts[k[0]]?'':'faint')+'" style="color:'+(counts[k[0]]?'var(--'+k[0]+')':'')+'">'+counts[k[0]]+'</b><span>'+k[1]+'</span>'));});
+  ss.appendChild(el('div','sevcard','<b>'+list.length+'</b><span>packages</span>'));
+  ss.appendChild(el('div','sevcard','<b class="faint" style="font-size:12px;font-weight:600;padding-top:6px">illustrative</b><span>severities only</span>'));
+  // table
+  var head=document.querySelector('#pkgtable thead');
+  var cols=[['n','Package'],['eco','Ecosystem'],['v','Installed'],['latest','Latest'],['sev','Vulnerability (CVSS)']];
+  head.innerHTML='<tr>'+cols.map(function(c){return '<th data-k="'+c[0]+'">'+c[1]+(pkgSort===c[0]?(pkgDir>0?' ▲':' ▼'):'')+'</th>';}).join('')+'</tr>';
+  [].forEach.call(head.querySelectorAll('th'),function(th){th.onclick=function(){var k=th.dataset.k;if(pkgSort===k)pkgDir*=-1;else{pkgSort=k;pkgDir=1;}renderPackages();};});
+  list.sort(function(a,b){var A=pkgSort==='sev'?(DEMO_SEV[a.n]||'zzz'):(a[pkgSort]||''),B=pkgSort==='sev'?(DEMO_SEV[b.n]||'zzz'):(b[pkgSort]||'');return (A>B?1:A<B?-1:0)*pkgDir;});
+  var tb=document.querySelector('#pkgtable tbody');tb.innerHTML='';
+  list.forEach(function(p){
+    var sev=DEMO_SEV[p.n];var sevCell=sev?'<span class="sev '+sev+'">'+sev.toUpperCase()+'</span> <span class="faint">illustrative</span>':'<span class="sev none">scan pending</span>';
+    var vtxt=p.v==='central'?'<span class="ver auto">central *</span>':'<span class="ver">'+p.v+'</span>';
+    var tr=el('tr');
+    tr.innerHTML='<td class="mono">'+esc(p.n)+(p.dev?' <span class="eco">dev</span>':'')+'</td><td><span class="eco">'+data.eco+'</span></td><td>'+vtxt+'</td><td class="ver auto">auto</td><td>'+sevCell+'</td>';
+    tb.appendChild(tr);
+  });
+  document.getElementById('pkgnote').innerHTML='Installed versions are real (from <code>package.json</code> / <code>.csproj</code>). <code>central *</code> = version managed centrally via MSBuild variables (e.g. <code>$(GrpcAspNetCoreVersion)</code>); the pipeline resolves the exact number during <code>dotnet restore</code>. <code>Latest</code> and real CVE/CVSS are filled by the OSV.dev + GitHub Advisory scan in CI.';
+  var sp=document.getElementById('scanpipe');sp.innerHTML='';
+  [['01','Restore','npm ci / dotnet restore → full transitive tree'],['02','Resolve','Exact versions incl. central-managed'],['03','Scan','Query OSV.dev + GitHub Advisory DB'],['04','Score','Attach CVE IDs + CVSS severity'],['05','Refresh','Re-scan nightly for new CVEs']].forEach(function(s){sp.appendChild(el('div','pstep','<div class="n">'+s[0]+'</div><div class="t">'+s[1]+'</div><div class="d">'+s[2]+'</div>'));});
+}
+
+/* ================= DEEP DIVE ================= */
+function renderDeepDive(){
+  var wrap=document.getElementById('deepdive');var h='';
+  h+='<div class="ddhero" id="dd-what"><h2>VOTING Ausmittlung <span class="sflag">security-critical</span></h2>'+
+     '<p>The result-tabulation heart of the VOTING suite: counting circles enter results, the canton audits and publishes them. The backend is an <b>event-sourced .NET 8 gRPC service</b> whose events are <b>cryptographically signed via an HSM (PKCS#11)</b>, giving an integrity-protected audit trail. Two Angular front-ends split the roles.</p>'+
+     '<div class="apps">'+AUS.apps.map(function(a){return '<div class="appcard"><b>'+a.n+'</b><div class="r">'+a.r+'</div><div class="port">ng serve · port '+a.port+'</div></div>';}).join('')+'</div></div>';
+  // stack
+  h+='<h3 class="blk">Tech stack <span class="faint" style="font-weight:400">— from real manifests</span></h3><div class="stackgrid">';
+  Object.keys(AUS.stack).forEach(function(k){h+='<div class="stackcol"><h4>'+k+'</h4><div class="chips">'+AUS.stack[k].map(function(x){return '<span class="cap">'+esc(x)+'</span>';}).join('')+'</div></div>';});
+  h+='</div>';
+  // api
+  h+='<h3 class="blk" id="dd-api">API surface &amp; capabilities <span class="faint" style="font-weight:400">— derived from the proto contract + CHANGELOG (v1.153.0); exact RPC signatures are extracted from <code>src/*.proto</code> by the pipeline</span></h3>';
+  AUS.caps.forEach(function(c){h+='<div class="grp"><h4>'+esc(c.g)+'</h4><div class="chips">'+c.items.map(function(it){return '<span class="cap'+(it[1]?' two':'')+'">'+esc(it[0])+'</span>';}).join('')+'</div></div>';});
+  // data model
+  h+='<h3 class="blk" id="dd-data">Data model <span class="faint" style="font-weight:400">— core domain entities (proto messages)</span></h3>';
+  AUS.entities.forEach(function(c){h+='<div class="grp"><h4>'+esc(c.g)+'</h4><div class="chips">'+c.items.map(function(x){return '<span class="cap mono">'+esc(x)+'</span>';}).join('')+'</div></div>';});
+  // flow
+  h+='<h3 class="blk" id="dd-flow">Cross-service flow <span class="faint" style="font-weight:400">— "enter &amp; submit a counting-circle result"</span></h3><div class="flow"><svg id="flowsvg" viewBox="0 0 980 560" preserveAspectRatio="xMidYMid meet"></svg></div><p class="note">Red steps require a second factor (2FA/OTP) or an HSM signature. The service is event-sourced: every state change is a signed, append-only event.</p>';
+  // security
+  h+='<h3 class="blk" id="dd-sec">Security &amp; crypto</h3><div class="grp"><ul class="seclist">'+AUS.security.map(function(s){return '<li>'+esc(s)+'</li>';}).join('')+'</ul></div>';
+  // docs
+  var base=GH+'voting-ausmittlung-docs/tree/main/technical-documentations';
+  h+='<h3 class="blk" id="dd-docs">Documentation <span class="faint" style="font-weight:400">— real documents in the docs repo</span></h3><div class="doclinks">'+AUS.docs.map(function(d){return '<a href="'+base+'" target="_blank">'+esc(d)+' ↗</a>';}).join('')+'</div>';
+  h+='<div style="margin-top:16px"><button class="cta" onclick="openRepo(\'voting-ausmittlung-service\')">Inspect the service repo →</button></div>';
+  wrap.innerHTML=h;
+  drawFlow();
+}
+function drawFlow(){
+  var s=document.getElementById('flowsvg');if(!s)return;s.innerHTML='';
+  var lanes=AUS.flow.lanes,steps=AUS.flow.steps;
+  var W=980,margin=80,laneW=(W-margin*2)/(lanes.length-1);
+  var laneX=lanes.map(function(_,i){return margin+i*laneW;});
+  var topY=44,stepY0=92,stepGap=42;
+  var colors={0:'#58a6ff',1:'#f78166',2:'#a371f7',3:'#3fb950',4:'#f85149',5:'#58a6ff'};
+  // lifelines + headers
+  lanes.forEach(function(name,i){
+    var x=laneX[i];
+    var line=document.createElementNS(SVGNS,'line');line.setAttribute('x1',x);line.setAttribute('x2',x);line.setAttribute('y1',topY+26);line.setAttribute('y2',stepY0+steps.length*stepGap+6);line.setAttribute('stroke','#30363d');line.setAttribute('stroke-dasharray','3 4');s.appendChild(line);
+    var box=document.createElementNS(SVGNS,'rect');box.setAttribute('x',x-58);box.setAttribute('y',topY-2);box.setAttribute('width',116);box.setAttribute('height',28);box.setAttribute('rx',6);box.setAttribute('fill','#1c2230');box.setAttribute('stroke',colors[i]||'#30363d');s.appendChild(box);
+    var tx=document.createElementNS(SVGNS,'text');tx.setAttribute('x',x);tx.setAttribute('y',topY+16);tx.setAttribute('text-anchor','middle');tx.setAttribute('fill','#e6edf3');tx.setAttribute('font-size','11');tx.textContent=name;s.appendChild(tx);
+  });
+  // arrows
+  steps.forEach(function(st,idx){
+    var y=stepY0+idx*stepGap;var x1=laneX[st.f],x2=laneX[st.t];var col=st.s?'#f85149':'#8b949e';
+    if(st.self){
+      var xx=x1;var path=document.createElementNS(SVGNS,'path');path.setAttribute('d','M'+(xx+4)+' '+(y-6)+' h34 v14 h-34');path.setAttribute('fill','none');path.setAttribute('stroke',col);path.setAttribute('stroke-width','1.6');s.appendChild(path);
+      arrowHead(s,xx+4,y+8,-1,col);
+      label(s,xx+44,y-2,st.l,col,'start');
+    }else{
+      var dir=x2>x1?1:-1;
+      var ln=document.createElementNS(SVGNS,'line');ln.setAttribute('x1',x1);ln.setAttribute('y1',y);ln.setAttribute('x2',x2-dir*7);ln.setAttribute('y2',y);ln.setAttribute('stroke',col);ln.setAttribute('stroke-width',st.s?'2':'1.5');s.appendChild(ln);
+      arrowHead(s,x2,y,dir,col);
+      var midX=(x1+x2)/2;
+      label(s,midX,y-6,(idx+1)+'. '+st.l,st.s?'#ffb3ae':'#c9d1d9','middle');
+    }
+  });
+}
+function arrowHead(s,x,y,dir,col){var p=document.createElementNS(SVGNS,'path');p.setAttribute('d','M'+x+' '+y+' l'+(-7*dir)+' -4 v8 z');p.setAttribute('fill',col);s.appendChild(p);}
+function label(s,x,y,txt,col,anchor){var t=document.createElementNS(SVGNS,'text');t.setAttribute('x',x);t.setAttribute('y',y);t.setAttribute('text-anchor',anchor||'middle');t.setAttribute('fill',col||'#c9d1d9');t.setAttribute('font-size','10.5');t.textContent=txt;s.appendChild(t);}
+
+/* ================= DRAWER ================= */
+var scrim=document.getElementById('scrim'),drawer=document.getElementById('drawer');
+function closeDrawer(){drawer.classList.remove('open');scrim.classList.remove('open');}
+scrim.onclick=closeDrawer;document.getElementById('drawerX').onclick=closeDrawer;
+function openRepo(name){
+  var r=BY_NAME[name];if(!r)return;var outs=depsOut(name),ins=depsIn(name);
+  var h='<h3>'+r.n+'</h3><div class="muted" style="font-size:12.5px">'+r.desc+'</div>';
+  if(r.sec&&r.notes.length)h+='<div class="secnote"><b>Security-critical.</b> '+r.notes.join(' · ')+'</div>';
+  if(r.dd)h+='<div style="margin:10px 0"><button class="cta" style="margin:0" onclick="closeDrawer();show(\'deepdive\')">Open Ausmittlung deep dive →</button></div>';
+  h+='<div class="kv"><div>Product</div><div>'+DOMAINS[r.d].product+'</div><div>Domain</div><div>'+DOMAINS[r.d].title+'</div><div>Type</div><div>'+tdot(r.t)+' '+TYPE_LABEL[r.t]+'</div><div>Language</div><div>'+r.lang+'</div>'+(r.external?'':'<div>Last push</div><div>'+r.pushed+'</div><div>Stars / forks</div><div>'+r.stars+' ★ · '+r.forks+' ⑂</div>')+'</div>';
+  if(PACKAGES[name])h+='<div class="h3lbl">Packages ('+PACKAGES[name].list.length+' top-level · '+PACKAGES[name].eco+')</div><div style="margin-bottom:12px"><button class="btnlink" onclick="closeDrawer();pkgProject=\''+name+'\';show(\'packages\');renderPackages()">View packages & vulns →</button></div>';
+  h+='<div class="h3lbl">Links to ('+outs.length+')</div><div class="deplist">'+(outs.length?outs.map(function(e){return depRow(e.t,e);}).join(''):'<div class="muted" style="font-size:12px">None</div>')+'</div>';
+  h+='<div class="h3lbl">Linked from ('+ins.length+')</div><div class="deplist">'+(ins.length?ins.map(function(e){return depRow(e.s,e);}).join(''):'<div class="muted" style="font-size:12px">None</div>')+'</div>';
+  var docs=docsRepoUrl(r);
+  h+='<div class="h3lbl">Links</div><div class="lnks"><a href="'+ghUrl(r)+'" target="_blank">GitHub ↗</a>'+(docs?'<a href="'+docs+'" target="_blank">Docs ↗</a>':'')+'<a href="'+ghUrl(r)+'/blob/main/CHANGELOG.md" target="_blank">Changelog ↗</a></div>';
+  document.getElementById('drawerBody').innerHTML=h;
+  [].forEach.call(drawer.querySelectorAll('.depitem'),function(d){d.onclick=function(){openRepo(d.dataset.n);};});
+  drawer.classList.add('open');scrim.classList.add('open');
+}
+function depRow(name,e){var r=BY_NAME[name];var vn=e.ver?'<span class="ver '+(e.real?'real':'auto')+'">'+e.ver+'</span>':'<span class="ver auto">auto</span>';return '<div class="depitem" data-n="'+name+'"><span>'+tdot(r?r.t:'external')+' '+name+' <span class="faint">· '+e.kind+'</span></span>'+vn+'</div>';}
+function openDomain(id){
+  var dm=DOMAINS[id],rs=REPOS.filter(function(r){return r.d===id&&!r.external;});
+  var h='<h3>'+dm.title+'</h3><div class="muted" style="font-size:12.5px">'+dm.purpose+'</div>';
+  if(dm.sec)h+='<div class="secnote"><b>Security-relevant domain.</b> Integrity-critical components in an e-voting context.</div>';
+  h+='<div class="h3lbl">'+rs.length+' repositories</div><div class="deplist">';
+  rs.forEach(function(r){h+='<div class="depitem" data-n="'+r.n+'"><span>'+tdot(r.t)+' '+r.n+'</span><span class="faint">'+r.lang+'</span></div>';});
+  h+='</div>';var dcs=docsRepoUrl(rs[0]||{d:id});
+  h+='<div class="h3lbl">Links</div><div class="lnks"><a href="https://github.com/abraxas-labs" target="_blank">Org ↗</a>'+(dcs?'<a href="'+dcs+'" target="_blank">Domain docs ↗</a>':'')+'</div>';
+  document.getElementById('drawerBody').innerHTML=h;
+  [].forEach.call(drawer.querySelectorAll('.depitem'),function(d){d.onclick=function(){openRepo(d.dataset.n);};});
+  drawer.classList.add('open');scrim.classList.add('open');
+}
+
+/* ================= NAV / SEARCH / LENS ================= */
+var VIEWS={overview:'Overview',architecture:'Architecture',graph:'Project links',packages:'Packages & vulnerabilities',deepdive:'Deep dive: Ausmittlung'};
+var graphReady=false,pkgReady=false,ddReady=false;
+function show(v){
+  [].forEach.call(document.querySelectorAll('.view'),function(s){s.classList.remove('active');});
+  document.getElementById('v-'+v).classList.add('active');
+  [].forEach.call(document.getElementById('nav').children,function(b){b.classList.toggle('active',b.dataset.v===v);});
+  document.getElementById('topTitle').textContent=VIEWS[v];
+  if(v==='graph'&&!graphReady){renderGraphFilters();renderGraph();graphReady=true;}
+  if(v==='packages'){renderPackages();pkgReady=true;}
+  if(v==='deepdive'&&!ddReady){renderDeepDive();ddReady=true;}
+  window.scrollTo(0,0);
+}
+[].forEach.call(document.getElementById('nav').children,function(b){b.onclick=function(){show(b.dataset.v);};});
+document.getElementById('lens').onclick=function(){this.classList.toggle('on');document.body.classList.toggle('sec-on');};
+document.getElementById('search').addEventListener('input',function(e){
+  var q=e.target.value.toLowerCase().trim();if(!q){closeDrawer();return;}
+  var hits=REPOS.filter(function(r){return !r.external&&(r.n.toLowerCase().indexOf(q)>=0||r.desc.toLowerCase().indexOf(q)>=0||DOMAINS[r.d].title.toLowerCase().indexOf(q)>=0);});
+  var h='<h3>Search · "'+esc(q)+'"</h3><div class="muted" style="font-size:12px">'+hits.length+' matches</div><div class="deplist" style="margin-top:12px">';
+  hits.slice(0,40).forEach(function(r){h+='<div class="depitem" data-n="'+r.n+'"><span>'+tdot(r.t)+' '+r.n+'</span><span class="faint">'+DOMAINS[r.d].title+'</span></div>';});
+  h+='</div>';document.getElementById('drawerBody').innerHTML=h;
+  [].forEach.call(drawer.querySelectorAll('.depitem'),function(d){d.onclick=function(){openRepo(d.dataset.n);};});
+  drawer.classList.add('open');scrim.classList.add('open');
+});
+
+/* ================= INIT ================= */
+renderOverview();renderArch();
+</script>
+</body>
+</html>

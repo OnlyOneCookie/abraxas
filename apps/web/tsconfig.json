@@ -1,0 +1,14 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "types": ["vite/client"],
+    "baseUrl": ".",
+    "paths": {
+      "@data": ["../../data/data.json"]
+    }
+  },
+  "include": ["src/**/*", "astro.config.mjs"]
+}

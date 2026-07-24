@@ -1,0 +1,10 @@
+{
+  "name": "voting-ausmittlung-service",
+  "description": "VOTING Ausmittlung Service (backend). Fixture.",
+  "language": "C#",
+  "pushedAt": "2026-06-19T00:00:00Z",
+  "stargazerCount": 3,
+  "forkCount": 2,
+  "url": "https://github.com/abraxas-labs/voting-ausmittlung-service",
+  "isArchived": false
+}

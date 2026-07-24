@@ -1,0 +1,88 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TypeDot from '../components/TypeDot.astro';
+import SecurityLens from '../islands/SecurityLens';
+import SearchBox from '../islands/SearchBox';
+import { data, TYPE_COLOR, shortName } from '../lib/data';
+
+const domains = data.domains
+  .filter((d) => !['unclassified', 'infra'].includes(d.id) || d.repos.length)
+  .map((d) => d.id);
+const ordered = [
+  'basis',
+  'stimmregister',
+  'ausmittlung',
+  'wahlvorschlag',
+  'su-online',
+  'su-offline',
+  'ecollecting',
+  'shared',
+  'per',
+  ...domains.filter((d) => ![
+    'basis','stimmregister','ausmittlung','wahlvorschlag','su-online','su-offline','ecollecting','shared','per'
+  ].includes(d)),
+].filter((d, i, a) => a.indexOf(d) === i && domains.includes(d));
+
+const layers: Array<[string, string[]]> = [
+  ['Frontend', ['webapp']],
+  ['Contracts', ['proto']],
+  ['Backend', ['service', 'app']],
+  ['Shared / Docs', ['library', 'docs', 'external']],
+];
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Architecture" active="architecture">
+  <Fragment slot="top">
+    <SearchBox client:load data={data} base={base} />
+    <SecurityLens client:load />
+  </Fragment>
+
+  <h2 class="sec">
+    Layered architecture
+    <span class="muted" style="font-weight:400;font-size:12px">— domains across, layers down</span>
+  </h2>
+
+  <div class="arow" style="border:0;padding-bottom:2px">
+    <div class="rl"></div>
+    <div class="acells" style={`grid-template-columns:repeat(${ordered.length},1fr)`}>
+      {ordered.map((id) => (
+        <div style="font-size:10px;color:var(--faint);text-align:center">
+          {data.domains.find((d) => d.id === id)?.title ?? id}
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <div class="arch">
+    {layers.map(([label, types]) => (
+      <div class="arow">
+        <div class="rl">{label}</div>
+        <div class="acells" style={`grid-template-columns:repeat(${ordered.length},1fr)`}>
+          {ordered.map((domainId) => (
+            <div class="cellwrap">
+              {data.repos
+                .filter((r) => r.domain === domainId && types.includes(r.type))
+                .map((r) => (
+                  <a
+                    class="node"
+                    href={`${base}domains/${r.domain}/`}
+                    data-sec={r.security.critical ? '1' : '0'}
+                    title={r.name}
+                  >
+                    <TypeDot type={r.type} color={TYPE_COLOR[r.type] ?? '#888'} />
+                    <span>{shortName(r.name)}</span>
+                  </a>
+                ))}
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <div class="glegend">
+    {Object.entries(TYPE_COLOR).map(([t, c]) => (
+      <span><TypeDot type={t} color={c} /> {t}</span>
+    ))}
+  </div>
+</BaseLayout>

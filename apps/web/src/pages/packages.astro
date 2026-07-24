@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SecurityLens from '../islands/SecurityLens';
+import SearchBox from '../islands/SearchBox';
+import PackageTable from '../islands/PackageTable';
+import { data } from '../lib/data';
+
+const base = import.meta.env.BASE_URL;
+const steps = [
+  ['01', 'Inventory', 'Direct deps from manifests (NuGet props resolved when I can)'],
+  ['02', 'Filter', 'Skip first-party @abraxas/* / Voting.*'],
+  ['03', 'Scan', 'Ask OSV.dev about the public packages'],
+  ['04', 'Score', 'Keep the CVE/GHSA id + CVSS v3/v4'],
+  ['05', 'Refresh', 'Nightly re-check for new advisories'],
+];
+---
+<BaseLayout title="Packages & vulnerabilities" active="packages">
+  <Fragment slot="top">
+    <SearchBox client:load data={data} base={base} />
+    <SecurityLens client:load />
+  </Fragment>
+
+  <h2 class="sec">
+    Packages &amp; vulnerabilities
+    <span class="muted" style="font-weight:400;font-size:12px">
+      — what each project declares, and what OSV says about those versions
+    </span>
+  </h2>
+
+  <PackageTable client:load data={data} />
+
+  <h3 class="sec" style="margin-top:20px">How I scan</h3>
+  <div class="pipe">
+    {steps.map(([n, t, d]) => (
+      <div class="pstep">
+        <div class="n">{n}</div>
+        <div class="t">{t}</div>
+        <div class="d">{d}</div>
+      </div>
+    ))}
+  </div>
+  <p class="note">
+    Repo↔repo links, third-party packages, and vulns are separate on purpose.
+    If OSV didn’t return an id, it doesn’t show up here.
+  </p>
+</BaseLayout>

@@ -1,0 +1,40 @@
+syntax = "proto3";
+package voting.ausmittlung.v1;
+
+import "validation/rules.proto";
+import "google/protobuf/empty.proto";
+
+service ContestService {
+  rpc GetContest (GetContestRequest) returns (Contest);
+  rpc ListContests (ListContestsRequest) returns (ListContestsResponse);
+}
+
+service ResultService {
+  rpc SubmitResult (SubmitResultRequest) returns (Result);
+  rpc FinishSubmission (FinishSubmissionRequest) returns (google.protobuf.Empty);
+}
+
+message Contest {
+  string id = 1;
+  string name = 2;
+}
+
+message GetContestRequest { string id = 1; }
+message ListContestsRequest {}
+message ListContestsResponse { repeated Contest contests = 1; }
+
+message CountingCircle {
+  string id = 1;
+}
+
+message Result {
+  string id = 1;
+}
+
+message Ballot {}
+message BallotBundle {}
+message ProtocolExport {}
+message EventSignaturePublicKey {}
+message SecondFactorTransaction {}
+message SubmitResultRequest {}
+message FinishSubmissionRequest {}

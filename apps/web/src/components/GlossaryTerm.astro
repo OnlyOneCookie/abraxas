@@ -1,0 +1,12 @@
+---
+interface Props {
+  term: string;
+  gloss?: string;
+}
+const { term, gloss } = Astro.props;
+---
+{gloss ? (
+  <abbr class="gloss" title={gloss}>{term}</abbr>
+) : (
+  <span>{term}</span>
+)}

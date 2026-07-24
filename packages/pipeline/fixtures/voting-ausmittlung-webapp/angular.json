@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "erfassung": {
+      "architect": {
+        "serve": { "options": { "port": 4300 } }
+      }
+    },
+    "monitoring": {
+      "architect": {
+        "serve": { "options": { "port": 4400 } }
+      }
+    },
+    "ausmittlung-lib": {}
+  }
+}

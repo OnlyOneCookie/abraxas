@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GlossaryTerm from '../components/GlossaryTerm.astro';
+import TypeDot from '../components/TypeDot.astro';
+import SecurityLens from '../islands/SecurityLens';
+import SearchBox from '../islands/SearchBox';
+import { data, TYPE_COLOR, LANG_COLOR, gloss } from '../lib/data';
+
+const real = data.repos.filter((r) => r.type !== 'external');
+const productCounts = new Map<string, number>();
+for (const r of real) {
+  productCounts.set(r.product, (productCounts.get(r.product) ?? 0) + 1);
+}
+const productDesc: Record<string, string> = {
+  voting: 'Election / e-voting suite — most of the org.',
+  per: 'Person-register lookup product.',
+  infra: 'Shared infra modules.',
+  unclassified: 'Stuff that doesn’t match the usual naming.',
+};
+const langCounts: Record<string, number> = {};
+for (const r of real) langCounts[r.language] = (langCounts[r.language] ?? 0) + 1;
+const langTotal = real.length || 1;
+const base = import.meta.env.BASE_URL;
+const steps = [
+  ['01', 'Trigger', 'Nightly cron or I run the workflow by hand'],
+  ['02', 'Collect', 'Clone public repos, read manifests / protos / changelogs'],
+  ['03', 'Analyze', 'Links + direct packages → OSV'],
+  ['04', 'data.json', 'One file the site builds from'],
+  ['05', 'Deploy', 'Static site on my GitHub Pages'],
+];
+
+const domainCards = data.domains
+  .filter((d) => d.id !== 'unclassified' || d.repos.length)
+  .map((d) => {
+    const rs = real.filter((r) => r.domain === d.id);
+    const types: Record<string, number> = {};
+    for (const r of rs) types[r.type] = (types[r.type] ?? 0) + 1;
+    return { d, rs, types };
+  });
+---
+<BaseLayout title="Overview" active="overview">
+  <Fragment slot="top">
+    <SearchBox client:load data={data} base={base} />
+    <SecurityLens client:load />
+  </Fragment>
+
+  <div class="prodgrid">
+    {data.products.map((p) => (
+      <div class="card prod">
+        <div class="big">{productCounts.get(p.id) ?? 0}</div>
+        <div class="lbl">{p.name} · repositories</div>
+        <div class="desc">{productDesc[p.id] ?? ''}</div>
+      </div>
+    ))}
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>{data.meta.coverage.repos}</b><span>repositories</span></div>
+    <div class="stat"><b>{data.domains.length}</b><span>domains</span></div>
+    <div class="stat"><b>{data.packages.filter((p) => p.osvEligible).length}</b><span>OSV-eligible pkgs</span></div>
+    <div class="stat"><b>{data.vulnerabilities.length}</b><span>findings</span></div>
+    <div class="stat"><b>{new Date(data.generatedAt).toISOString().slice(0, 10)}</b><span>generated</span></div>
+  </div>
+
+  <div class="langbar" aria-hidden="true">
+    {Object.entries(langCounts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([lang, n]) => (
+        <i style={`width:${(n / langTotal) * 100}%;background:${LANG_COLOR[lang] ?? '#888'}`} title={`${lang} — ${n}`}></i>
+      ))}
+  </div>
+  <div class="leglang">
+    {Object.entries(langCounts)
+      .sort((a, b) => b[1] - a[1])
+      .map(([lang, n]) => (
+        <span>
+          <span class="tdot" style={`background:${LANG_COLOR[lang] ?? '#888'}`}></span>
+          <b>{lang}</b> {n}
+        </span>
+      ))}
+  </div>
+
+  <div class="card" style="margin-bottom:20px">
+    <h2 class="sec" style="margin-bottom:4px">
+      Keeping it fresh <span class="muted" style="font-weight:400;font-size:12px">— not whatever was open in my browser</span>
+    </h2>
+    <p class="muted" style="margin:2px 0 8px;font-size:12.5px">
+      A GitHub Action re-pulls the public org <b>nightly</b> (and whenever I hit Run workflow).
+      Pushing code to <i>this</i> repo just rebuilds the site from the last <code>data.json</code> — it doesn’t re-clone abraxas-labs.
+      Nightly also asks OSV again in case new CVEs showed up for the same package versions.
+    </p>
+    <div class="pipe">
+      {steps.map(([n, t, d]) => (
+        <div class="pstep">
+          <div class="n">{n}</div>
+          <div class="t">{t}</div>
+          <div class="d">{d}</div>
+        </div>
+      ))}
+    </div>
+    <p class="note">
+      Vuln mode: <code>{data.meta.vulnScan.mode ?? '—'}</code>
+      {data.meta.vulnScan.enabled ? ' · enabled' : ` · disabled${data.meta.vulnScan.reason ? ` (${data.meta.vulnScan.reason})` : ''}`}
+    </p>
+  </div>
+
+  <h2 class="sec">
+    Domains &amp; products
+    <span class="muted" style="font-weight:400;font-size:12px">— click any card</span>
+  </h2>
+  <div class="dgrid">
+    {domainCards.map(({ d, rs, types }) => (
+      <a
+        class="dcard"
+        href={`${base}domains/${d.id}/`}
+        data-sec={d.securityCritical ? '1' : '0'}
+      >
+        <h3>
+          <GlossaryTerm term={d.title} gloss={gloss(d.title)} />
+          {d.securityCritical && <span class="sflag">security</span>}
+          <span class="chip" style="border-color:var(--purple);color:var(--purple)">
+            {d.coverage.confidence} ▸
+          </span>
+        </h3>
+        <div class="p">{d.purpose}</div>
+        <div class="chips">
+          {Object.entries(types).map(([t, n]) => (
+            <span class="chip">
+              <TypeDot type={t} color={TYPE_COLOR[t] ?? '#888'} /> {t} ×{n}
+            </span>
+          ))}
+        </div>
+        <div class="muted" style="font-size:11px;margin-top:10px">
+          {rs.length} repos · {d.product}
+          {!d.coverage.hasProto && ' · no proto'}
+          {!d.coverage.hasDocs && ' · no docs'}
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

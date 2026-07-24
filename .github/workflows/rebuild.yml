@@ -1,0 +1,100 @@
+name: Rebuild explorer
+
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      # Don't re-run the whole job when the bot only bumps data.json
+      - "data/**"
+      - "README.md"
+      - "docs/**"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  pipeline:
+    if: github.event_name != 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @abraxas/schema build
+      - name: Run org pipeline
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VULN_SCAN_ENABLED: ${{ vars.VULN_SCAN_ENABLED || 'true' }}
+          VULN_SCAN_MODE: ${{ vars.VULN_SCAN_MODE || 'direct' }}
+          VULN_SCANNER: ${{ vars.VULN_SCANNER || 'osv' }}
+        run: |
+          TRIGGER="${{ github.event_name }}"
+          pnpm --filter @abraxas/pipeline start -- --trigger "$TRIGGER"
+      - name: Commit refreshed data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/data.json
+          if git diff --staged --quiet; then
+            echo "No data.json changes"
+          else
+            git commit -m "chore: refresh abraxas-labs snapshot"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: data-json
+          path: data/data.json
+
+  build:
+    needs: [pipeline]
+    if: always() && (needs.pipeline.result == 'success' || github.event_name == 'push')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm --filter @abraxas/schema build
+      - name: Download fresh data.json
+        if: needs.pipeline.result == 'success'
+        uses: actions/download-artifact@v4
+        with:
+          name: data-json
+          path: data
+      - name: Build site
+        run: pnpm --filter @abraxas/web build
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/dist
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

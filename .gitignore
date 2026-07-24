@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Builds & caches
+dist/
+.astro/
+.cache/
+*.tsbuildinfo
+coverage/
+test-results/
+playwright-report/
+
+# Pipeline working tree (cloned org repos — regenerate via pnpm pipeline)
+workspace/
+
+# Local / generated runtime state
+tmp/
+*.log
+apps/web/public/generated/
+data/update-status.json
+
+# Env & secrets
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~

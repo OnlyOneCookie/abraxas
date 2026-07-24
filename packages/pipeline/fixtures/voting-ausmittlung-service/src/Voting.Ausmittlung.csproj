@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Grpc.AspNetCore" Version="$(GrpcAspNetCoreVersion)" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="$(EfCoreVersion)" />
+    <PackageReference Include="Serilog.AspNetCore" Version="$(SerilogAspNetCoreVersion)" />
+    <PackageReference Include="prometheus-net.AspNetCore" Version="$(PrometheusNetVersion)" />
+    <PackageReference Include="Voting.Lib.Grpc" Version="$(VotingLibVersion)" />
+    <PackageReference Include="Voting.Ausmittlung.Service.Proto" Version="$(VotingAusmittlungProtoVersion)" />
+  </ItemGroup>
+</Project>

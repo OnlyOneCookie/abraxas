@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <GrpcAspNetCoreVersion>2.61.0</GrpcAspNetCoreVersion>
+    <EfCoreVersion>8.0.2</EfCoreVersion>
+    <SerilogAspNetCoreVersion>8.0.1</SerilogAspNetCoreVersion>
+    <PrometheusNetVersion>8.2.1</PrometheusNetVersion>
+    <VotingLibVersion>22.0.0</VotingLibVersion>
+    <VotingAusmittlungProtoVersion>1.153.0</VotingAusmittlungProtoVersion>
+    <WarningsNotAsErrors>NU1902;NU1903</WarningsNotAsErrors>
+  </PropertyGroup>
+</Project>

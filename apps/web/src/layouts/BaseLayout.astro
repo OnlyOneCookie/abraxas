@@ -1,0 +1,127 @@
+---
+import '../styles/tokens.css';
+import '../styles/global.css';
+import UpdatePanel from '../islands/UpdatePanel';
+import { data } from '../lib/data';
+
+interface Props {
+  title: string;
+  active: string;
+}
+
+const { title, active } = Astro.props;
+const base = import.meta.env.BASE_URL;
+const nav = [
+  { id: 'overview', href: `${base}`, label: 'Overview', ico: '◈' },
+  { id: 'architecture', href: `${base}architecture/`, label: 'Architecture', ico: '▤' },
+  { id: 'links', href: `${base}links/`, label: 'Project links', ico: '⧉' },
+  { id: 'packages', href: `${base}packages/`, label: 'Packages & vulns', ico: '⬢' },
+  { id: 'domains', href: `${base}domains/`, label: 'Deep dives', ico: '◎' },
+];
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} · Abraxas Explorer</title>
+    <meta name="description" content="Personal map of public abraxas-labs repos — links, packages, OSV findings. Unofficial." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app">
+      <div class="nav-backdrop" data-nav-close hidden></div>
+      <aside class="side" id="primary-nav" aria-label="Primary">
+        <div class="brand">
+          <svg class="hat" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <path d="M4 24c3-2 8-3 12-3s9 1 12 3" stroke="#a371f7" stroke-width="2" stroke-linecap="round"/>
+            <path d="M9 22c1-7 3-12 7-12s6 5 7 12" fill="#7c3aed"/>
+            <ellipse cx="16" cy="22" rx="8" ry="2.4" fill="#a371f7"/>
+          </svg>
+          <div>
+            <b>Abraxas Labs Explorer</b>
+            <span>personal · public data only</span>
+          </div>
+          <button
+            type="button"
+            class="nav-close"
+            data-nav-close
+            aria-label="Close menu"
+          >
+            ✕
+          </button>
+        </div>
+        <nav class="nav">
+          {nav.map((item) => (
+            <a
+              href={item.href}
+              class={item.id === active ? 'active' : undefined}
+              aria-current={item.id === active ? 'page' : undefined}
+            >
+              <span class="ico" aria-hidden="true">{item.ico}</span>
+              {item.label}
+            </a>
+          ))}
+        </nav>
+        <UpdatePanel
+          client:load
+          generatedAt={data.generatedAt}
+          repoCount={data.meta.coverage.repos}
+          triggers={data.meta.triggers}
+          pipelineVersion={data.meta.pipelineVersion}
+        />
+      </aside>
+      <div class="main">
+        <div class="top">
+          <button
+            type="button"
+            class="nav-toggle"
+            data-nav-open
+            aria-controls="primary-nav"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </button>
+          <h1>{title}</h1>
+          <span class="live"><span class="dot" aria-hidden="true"></span> nightly rebuild</span>
+          <div class="spacer"></div>
+          <div class="top-tools">
+            <slot name="top" />
+          </div>
+        </div>
+        <div class="content">
+          <slot />
+        </div>
+      </div>
+    </div>
+    <script is:inline>
+      (function () {
+        var body = document.body;
+        var toggle = document.querySelector("[data-nav-open]");
+        var backdrop = document.querySelector(".nav-backdrop");
+        function setOpen(open) {
+          body.classList.toggle("nav-open", open);
+          if (toggle) toggle.setAttribute("aria-expanded", open ? "true" : "false");
+          if (backdrop) backdrop.hidden = !open;
+        }
+        document.querySelectorAll("[data-nav-open]").forEach(function (el) {
+          el.addEventListener("click", function () { setOpen(true); });
+        });
+        document.querySelectorAll("[data-nav-close]").forEach(function (el) {
+          el.addEventListener("click", function () { setOpen(false); });
+        });
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") setOpen(false);
+        });
+        window.addEventListener("resize", function () {
+          if (window.matchMedia("(min-width: 901px)").matches) setOpen(false);
+        });
+      })();
+    </script>
+  </body>
+</html>

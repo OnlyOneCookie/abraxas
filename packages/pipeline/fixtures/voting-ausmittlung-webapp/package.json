@@ -1,0 +1,18 @@
+{
+  "name": "voting-ausmittlung-webapp",
+  "private": true,
+  "dependencies": {
+    "@angular/core": "21.2.8",
+    "@angular/material": "21.2.6",
+    "rxjs": "7.8.2",
+    "grpc-web": "1.5.0",
+    "otplib": "13.4.0",
+    "@ngx-translate/core": "17.0.0",
+    "@abraxas/voting-lib": "5.17.8",
+    "@abraxas/base-components": "21.30.0",
+    "@abraxas/voting-ausmittlung-service-proto": "1.153.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}

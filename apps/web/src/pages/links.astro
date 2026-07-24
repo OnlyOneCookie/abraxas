@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SecurityLens from '../islands/SecurityLens';
+import SearchBox from '../islands/SearchBox';
+import ProjectGraph from '../islands/ProjectGraph';
+import { data } from '../lib/data';
+
+const base = import.meta.env.BASE_URL;
+---
+<BaseLayout title="Project links" active="links">
+  <Fragment slot="top">
+    <SearchBox client:load data={data} base={base} />
+    <SecurityLens client:load />
+  </Fragment>
+
+  <h2 class="sec">
+    Project links
+    <span class="muted" style="font-weight:400;font-size:12px">
+      — how repos depend on each other · drag nodes · hover to follow edges · versions on hover when I know them
+    </span>
+  </h2>
+
+  <ProjectGraph client:load data={data} base={base} />
+</BaseLayout>
