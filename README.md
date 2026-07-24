@@ -2,7 +2,7 @@
 
 I built this to get my head around the public [`abraxas-labs`](https://github.com/abraxas-labs) org — how the voting products hang together, which repos talk to which, what third-party packages they pull in, and whether OSV knows about anything nasty in those versions.
 
-It's **my** private project under [`onlyonecookie/abraxas-labs-explorer`](https://github.com/onlyonecookie/abraxas-labs-explorer). Not an Abraxas thing, not affiliated with them. I only look at public repos.
+It's **my** private project under [`OnlyOneCookie/abraxas`](https://github.com/OnlyOneCookie/abraxas). Not an Abraxas thing, not affiliated with them. I only look at public repos.
 
 ## Run it locally
 
@@ -17,14 +17,14 @@ In local dev the sidebar “Update now” actually re-runs the pipeline. On GitH
 
 ## Put it on GitHub Pages
 
-1. Create a **private** repo named `abraxas-labs-explorer` on **your** account (`onlyonecookie`) — please don’t push this into `abraxas-labs`.
-2. Push `main` (keep `data/data.json` in the commit).
+1. This lives in **private** `OnlyOneCookie/abraxas` — don’t push it into `abraxas-labs`.
+2. Push `master` (keep `data/data.json` in the commit).
 3. Repo settings → Pages → source = **GitHub Actions**.
 4. Actions → **Rebuild explorer** → Run workflow.
 
 Then it should show up at:
 
-`https://onlyonecookie.github.io/abraxas-labs-explorer/`
+`https://onlyonecookie.github.io/abraxas/`
 
 Free GitHub only does Pages for public repos. Private Pages needs Pro. Either way the workflow can still refresh `data.json` in the private repo.
 

@@ -1,6 +1,6 @@
 # Running / deploying
 
-Repo that hosts the site: `onlyonecookie/abraxas-labs-explorer` (private).  
+Repo that hosts the site: `OnlyOneCookie/abraxas` (private).  
 Org I scrape: public `abraxas-labs`. That’s it.
 
 ## When the pipeline runs
@@ -9,7 +9,7 @@ Org I scrape: public `abraxas-labs`. That’s it.
 |---------|----------------|
 | Nightly ~02:00 UTC | Re-collect org, OSV scan, write `data.json`, commit it, build, deploy Pages |
 | Manual “Run workflow” / sidebar refresh link | Same as nightly |
-| Push to `main` | Rebuild the site from the committed `data.json` (skips if the push was only `data/**` from the bot) |
+| Push to `master` | Rebuild the site from the committed `data.json` (skips if the push was only `data/**` from the bot) |
 
 ## Env knobs (optional)
 
@@ -39,12 +39,9 @@ pnpm test
 
 ## First push
 
-```bash
-cd /path/to/this-folder
-git init
-git add .
-git commit -m "Initial abraxas-labs-explorer"
-gh repo create onlyonecookie/abraxas-labs-explorer --private --source=. --remote=origin --push
-```
+Already on GitHub as `OnlyOneCookie/abraxas`. To refresh Pages after config changes:
 
-Then Pages → GitHub Actions, run **Rebuild explorer** once.
+```bash
+git add -A && git commit -m "fix pages base for OnlyOneCookie/abraxas" && git push
+gh workflow run rebuild.yml
+```

@@ -26,7 +26,7 @@ GitHub API for metadata, shallow clones for the actual files. Submodules are bes
 
 ## Hosting
 
-Pages from `onlyonecookie/abraxas-labs-explorer`. Data still comes from public `abraxas-labs`. Unofficial on purpose.
+Pages from `OnlyOneCookie/abraxas`. Data still comes from public `abraxas-labs`. Unofficial on purpose.
 
 ## Three things I keep separate in the UI
 

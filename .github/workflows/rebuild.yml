@@ -5,7 +5,7 @@ on:
     - cron: "0 2 * * *"
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [master, main]
     paths-ignore:
       # Don't re-run the whole job when the bot only bumps data.json
       - "data/**"
@@ -90,7 +90,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master' || github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment:
       name: github-pages

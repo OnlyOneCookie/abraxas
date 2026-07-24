@@ -6,7 +6,7 @@ import {
   EXPLORER_SITE,
 } from "./src/lib/site.ts";
 
-// GitHub Pages serves under /abraxas-labs-explorer/; local `astro dev` uses /
+// GitHub Pages serves under /abraxas/; local `astro dev` uses /
 const isProdBuild = process.argv.includes("build");
 
 export default defineConfig({
