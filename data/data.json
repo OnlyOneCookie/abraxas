@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-31T05:38:50.154Z",
+  "generatedAt": "2026-08-01T05:32:17.832Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-07-31T05:38:50.154Z"
+      "scannedAt": "2026-08-01T05:32:17.831Z"
     },
     "coverage": {
       "repos": 34,
@@ -17370,6 +17370,41 @@
         "https://nvd.nist.gov/vuln/detail/CVE-2026-53463",
         "https://github.com/ImageMagick/ImageMagick",
         "https://github.com/dlemstra/Magick.NET/releases/tag/14.14.0"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-pjxj-pchx-4c3m",
+      "aliases": [
+        "CVE-2026-53466"
+      ],
+      "package": {
+        "ecosystem": "nuget",
+        "name": "Magick.NET-Q16-AnyCPU",
+        "installedVersion": "14.13.1"
+      },
+      "repos": [
+        "voting-library-dotnet"
+      ],
+      "severity": "MEDIUM",
+      "cvssScore": 6.5,
+      "cvssV3": {
+        "version": "3.1",
+        "score": 6.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:L/I:N/A:L"
+      },
+      "cvssV4": null,
+      "summary": "ImageMagick: Heap Buffer Over-Read in XCF decoder due to integer conversion overflow",
+      "fixedIn": [
+        "14.15.0"
+      ],
+      "references": [
+        "https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pjxj-pchx-4c3m",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-53466",
+        "https://github.com/ImageMagick/ImageMagick/commit/47ca7210515f3c9ea033b86fe4323a70caa74468",
+        "https://github.com/ImageMagick/ImageMagick",
+        "https://github.com/ImageMagick/ImageMagick/releases/tag/7.1.2-26",
+        "https://github.com/dlemstra/Magick.NET/releases/tag/14.15.0"
       ],
       "source": "osv-api"
     },
