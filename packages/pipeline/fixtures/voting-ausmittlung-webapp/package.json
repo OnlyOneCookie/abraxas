@@ -2,7 +2,7 @@
   "name": "voting-ausmittlung-webapp",
   "private": true,
   "dependencies": {
-    "@angular/core": "21.2.8",
+    "@angular/core": "21.2.19",
     "@angular/material": "21.2.6",
     "rxjs": "7.8.2",
     "grpc-web": "1.5.0",
