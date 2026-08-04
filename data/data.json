@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-03T05:45:53.460Z",
+  "generatedAt": "2026-08-04T05:18:03.494Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-08-03T05:45:53.460Z"
+      "scannedAt": "2026-08-04T05:18:03.494Z"
     },
     "coverage": {
       "repos": 34,
@@ -15243,6 +15243,162 @@
       "source": "osv-api"
     },
     {
+      "id": "GHSA-jhpw-976m-542j",
+      "aliases": [
+        "CVE-2026-68945"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/common",
+        "installedVersion": "21.2.8"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.8,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.8,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning",
+      "fixedIn": [
+        "22.0.2",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jhpw-976m-542j",
+        "https://github.com/angular/angular/pull/68571",
+        "https://github.com/angular/angular/commit/6867f77ec779a0a24f6339ad6c775f444202103c",
+        "https://github.com/angular/angular/commit/948a8d6831e8920b54663ec79421da95210e0e35",
+        "https://github.com/angular/angular/commit/a64e2883e9dc4abdac70209129be303de79e5b2b",
+        "https://github.com/angular/angular/commit/a6c7fc5c13e6e494a4c9bd8e773b8d4b2a99b20c",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jhpw-976m-542j",
+      "aliases": [
+        "CVE-2026-68945"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/common",
+        "installedVersion": "21.2.5"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.8,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.8,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning",
+      "fixedIn": [
+        "22.0.2",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jhpw-976m-542j",
+        "https://github.com/angular/angular/pull/68571",
+        "https://github.com/angular/angular/commit/6867f77ec779a0a24f6339ad6c775f444202103c",
+        "https://github.com/angular/angular/commit/948a8d6831e8920b54663ec79421da95210e0e35",
+        "https://github.com/angular/angular/commit/a64e2883e9dc4abdac70209129be303de79e5b2b",
+        "https://github.com/angular/angular/commit/a6c7fc5c13e6e494a4c9bd8e773b8d4b2a99b20c",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jhpw-976m-542j",
+      "aliases": [
+        "CVE-2026-68945"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/common",
+        "installedVersion": "20.2.0"
+      },
+      "repos": [
+        "per-auskunft-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.8,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.8,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning",
+      "fixedIn": [
+        "22.0.2",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jhpw-976m-542j",
+        "https://github.com/angular/angular/pull/68571",
+        "https://github.com/angular/angular/commit/6867f77ec779a0a24f6339ad6c775f444202103c",
+        "https://github.com/angular/angular/commit/948a8d6831e8920b54663ec79421da95210e0e35",
+        "https://github.com/angular/angular/commit/a64e2883e9dc4abdac70209129be303de79e5b2b",
+        "https://github.com/angular/angular/commit/a6c7fc5c13e6e494a4c9bd8e773b8d4b2a99b20c",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jhpw-976m-542j",
+      "aliases": [
+        "CVE-2026-68945"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/common",
+        "installedVersion": "21.2.6"
+      },
+      "repos": [
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.8,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.8,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning",
+      "fixedIn": [
+        "22.0.2",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jhpw-976m-542j",
+        "https://github.com/angular/angular/pull/68571",
+        "https://github.com/angular/angular/commit/6867f77ec779a0a24f6339ad6c775f444202103c",
+        "https://github.com/angular/angular/commit/948a8d6831e8920b54663ec79421da95210e0e35",
+        "https://github.com/angular/angular/commit/a64e2883e9dc4abdac70209129be303de79e5b2b",
+        "https://github.com/angular/angular/commit/a6c7fc5c13e6e494a4c9bd8e773b8d4b2a99b20c",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
       "id": "GHSA-p3vc-36g9-x9gr",
       "aliases": [
         "CVE-2026-50171"
@@ -16066,6 +16222,310 @@
         "https://nvd.nist.gov/vuln/detail/CVE-2026-50557",
         "https://github.com/angular/angular/pull/68689",
         "https://github.com/angular/angular/pull/68868",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/compiler",
+        "installedVersion": "21.2.8"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/core",
+        "installedVersion": "21.2.8"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/compiler",
+        "installedVersion": "21.2.5"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/core",
+        "installedVersion": "21.2.5"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/compiler",
+        "installedVersion": "20.2.0"
+      },
+      "repos": [
+        "per-auskunft-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/core",
+        "installedVersion": "20.2.0"
+      },
+      "repos": [
+        "per-auskunft-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/compiler",
+        "installedVersion": "21.2.6"
+      },
+      "repos": [
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jj27-h5hq-8x99",
+      "aliases": [
+        "CVE-2026-69151"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/core",
+        "installedVersion": "21.2.6"
+      },
+      "repos": [
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.6,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 7.6,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+      "fixedIn": [
+        "22.0.1",
+        "21.2.19",
+        "20.3.27"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
+        "https://github.com/angular/angular/pull/68821",
+        "https://github.com/angular/angular/pull/69306",
+        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
+        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
         "https://github.com/angular/angular"
       ],
       "source": "osv-api"
