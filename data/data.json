@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-08-05T05:18:00.515Z",
+  "generatedAt": "2026-08-06T05:20:24.231Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-08-05T05:18:00.515Z"
+      "scannedAt": "2026-08-06T05:20:24.231Z"
     },
     "coverage": {
       "repos": 34,
@@ -798,13 +797,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "💻 VOTING Stimmunterlagen Online Web Application",
-      "lastPush": "2026-07-23T13:57:52Z",
+      "lastPush": "2026-08-05T11:54:12Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-webapp/blob/main/CHANGELOG.md",
-      "version": "3.36.1",
+      "version": "3.36.3",
       "security": {
         "critical": false,
         "notes": []
@@ -20396,7 +20395,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant Svc as Domain service\n  participant Basis as Basis\n  participant SR as Stimmregister\n  participant HSM as HSM PKCS11\n  WebApp->>Svc: Load contest / context\n  Svc->>Basis: Master data (contest, DoI, circles)\n  Svc->>SR: Count of voters / register queries\n  WebApp->>Svc: Submit / mutate state\n  WebApp->>Svc: Second factor (OTP) on sensitive transition\n  Svc->>HSM: Sign event (PKCS#11)\n  Svc->>Svc: Append signed event\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/ausmittlung.svg"
       },
@@ -21908,7 +21907,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant Svc as Domain service\n  participant SR as Stimmregister\n  participant HSM as HSM PKCS11\n  WebApp->>Svc: Load contest / context\n  Svc->>SR: Count of voters / register queries\n  WebApp->>Svc: Submit / mutate state\n  WebApp->>Svc: Second factor (OTP) on sensitive transition\n  Svc->>HSM: Sign event (PKCS#11)\n  Svc->>Svc: Append signed event\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/basis.svg"
       },
@@ -21996,7 +21995,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant SR as Stimmregister\n  participant HSM as HSM PKCS11\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/shared.svg"
       },
@@ -22047,7 +22046,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant Dev as Engineer\n  participant Dom as Stimmunterlagen Offline\n  Dev->>Dom: Explore domain repos\n  Note over Dom: Heuristic placeholder — limited link signals",
         "svgPath": "/generated/flows/su-offline.svg"
       },
@@ -22787,7 +22786,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant Svc as Domain service\n  participant SR as Stimmregister\n  participant HSM as HSM PKCS11\n  WebApp->>Svc: Load contest / context\n  Svc->>SR: Count of voters / register queries\n  WebApp->>Svc: Submit / mutate state\n  Svc->>HSM: Sign event (PKCS#11)\n  Svc->>Svc: Append signed event\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/stimmregister.svg"
       },
@@ -23740,7 +23739,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant Svc as Domain service\n  participant Basis as Basis\n  participant SR as Stimmregister\n  WebApp->>Svc: Load contest / context\n  Svc->>Basis: Master data (contest, DoI, circles)\n  Svc->>SR: Count of voters / register queries\n  WebApp->>Svc: Submit / mutate state\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/su-online.svg"
       },
@@ -23835,7 +23834,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant SR as Stimmregister\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/per.svg"
       },
@@ -23926,7 +23925,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant Svc as Domain service\n  participant Basis as Basis\n  participant SR as Stimmregister\n  WebApp->>Svc: Load contest / context\n  Svc->>Basis: Master data (contest, DoI, circles)\n  Svc->>SR: Count of voters / register queries\n  WebApp->>Svc: Submit / mutate state\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/wahlvorschlag.svg"
       },
@@ -25088,7 +25087,7 @@
       },
       "flow": {
         "kind": "heuristic",
-        "disclaimer": "Inferred from project links and security signals; not an authoritative sequence.",
+        "disclaimer": "Guessed from project links + whatever security signals I found — not an official sequence diagram from Abraxas.",
         "mermaid": "sequenceDiagram\n  participant WebApp as Web app\n  participant Svc as Domain service\n  participant Basis as Basis\n  participant SR as Stimmregister\n  participant HSM as HSM PKCS11\n  WebApp->>Svc: Load contest / context\n  Svc->>Basis: Master data (contest, DoI, circles)\n  Svc->>SR: Count of voters / register queries\n  WebApp->>Svc: Submit / mutate state\n  Svc->>HSM: Sign event (PKCS#11)\n  Svc->>Svc: Append signed event\n  Note over WebApp,Svc: Heuristic flow — verify against domain docs",
         "svgPath": "/generated/flows/ecollecting.svg"
       },
