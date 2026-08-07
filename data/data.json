@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T05:20:24.231Z",
+  "generatedAt": "2026-08-07T04:28:11.532Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -11,7 +11,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-08-06T05:20:24.231Z"
+      "scannedAt": "2026-08-07T04:28:11.532Z"
     },
     "coverage": {
       "repos": 34,
@@ -285,7 +285,7 @@
       "type": "docs",
       "language": "Other",
       "description": "📚 Includes all superordinate documentation for VOTING Ausmittlung (e.g. architecture documentation, finding list, etc.)",
-      "lastPush": "2026-03-25T13:39:07Z",
+      "lastPush": "2026-08-06T09:53:25Z",
       "stars": 6,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
@@ -20498,6 +20498,21 @@
         {
           "title": "VOTING Ausmittlung Transport Security",
           "url": "https://github.com/abraxas-labs/voting-ausmittlung-docs/blob/main/technical-documentations/VOTING_Ausmittlung_Transport_Security.pdf",
+          "format": "pdf"
+        },
+        {
+          "title": "VOTING Ausmiuttlung Erfassung Quick Guide",
+          "url": "https://github.com/abraxas-labs/voting-ausmittlung-docs/blob/main/technical-documentations/VOTING_Ausmiuttlung_Erfassung_Quick_Guide.pdf",
+          "format": "pdf"
+        },
+        {
+          "title": "VOTING Ausmiuttlung Monitoring Quick Guide",
+          "url": "https://github.com/abraxas-labs/voting-ausmittlung-docs/blob/main/technical-documentations/VOTING_Ausmiuttlung_Monitoring_Quick_Guide.pdf",
+          "format": "pdf"
+        },
+        {
+          "title": "VOTING Basis Quick Guide",
+          "url": "https://github.com/abraxas-labs/voting-ausmittlung-docs/blob/main/technical-documentations/VOTING_Basis_Quick_Guide.pdf",
           "format": "pdf"
         },
         {
