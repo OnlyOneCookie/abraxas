@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T07:29:32.460Z",
+  "generatedAt": "2026-09-02T06:56:18.887Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -11,7 +11,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-01T07:29:32.460Z"
+      "scannedAt": "2026-09-02T06:56:18.887Z"
     },
     "coverage": {
       "repos": 34,
@@ -1051,13 +1051,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "💻 VOTING E-Collecting Web Application",
-      "lastPush": "2026-07-22T13:33:13Z",
+      "lastPush": "2026-09-01T10:17:16Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-webapp/blob/main/CHANGELOG.md",
-      "version": "1.149.0",
+      "version": "1.150.16",
       "security": {
         "critical": true,
         "notes": [
@@ -1078,13 +1078,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING E-Collecting Service",
-      "lastPush": "2026-07-22T13:33:12Z",
+      "lastPush": "2026-09-01T10:17:18Z",
       "stars": 1,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-service/blob/main/CHANGELOG.md",
-      "version": "1.158.2",
+      "version": "1.163.11",
       "security": {
         "critical": true,
         "notes": [
@@ -1105,13 +1105,13 @@
       "type": "proto",
       "language": "Shell",
       "description": "🧱 VOTING E-Collecting Proto",
-      "lastPush": "2026-07-22T13:33:07Z",
+      "lastPush": "2026-09-01T10:17:10Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-proto",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-proto/blob/main/CHANGELOG.md",
-      "version": "1.114.0",
+      "version": "1.114.1",
       "security": {
         "critical": true,
         "notes": [
@@ -1133,13 +1133,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING E-Collecting Citizen E-Service",
-      "lastPush": "2026-07-10T12:49:15Z",
+      "lastPush": "2026-09-01T10:17:12Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-citizen-eservice",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-citizen-eservice/blob/main/CHANGELOG.md",
-      "version": "1.2.0",
+      "version": "1.3.0",
       "security": {
         "critical": true,
         "notes": [
@@ -1421,44 +1421,23 @@
     {
       "sourceRepo": "voting-ecollecting-webapp",
       "targetRepo": "@abraxas/base-components",
-      "version": "21.80.0",
+      "version": "21.97.0",
       "kind": "external",
       "source": "package.json"
     },
     {
       "sourceRepo": "voting-ecollecting-webapp",
       "targetRepo": "voting-ecollecting-proto",
-      "version": "1.114.0",
+      "version": "1.114.1",
       "kind": "proto",
       "source": "package.json"
     },
     {
       "sourceRepo": "voting-ecollecting-webapp",
       "targetRepo": "voting-library-angular",
-      "version": "5.17.13",
+      "version": "5.17.15",
       "kind": "shared-lib",
       "source": "package.json"
-    },
-    {
-      "sourceRepo": "voting-ecollecting-service",
-      "targetRepo": "voting-basis-proto",
-      "version": null,
-      "kind": "proto",
-      "source": "csproj"
-    },
-    {
-      "sourceRepo": "voting-ecollecting-service",
-      "targetRepo": "voting-library-dotnet",
-      "version": null,
-      "kind": "shared-lib",
-      "source": "csproj"
-    },
-    {
-      "sourceRepo": "voting-ecollecting-service",
-      "targetRepo": "voting-stimmregister-proto",
-      "version": null,
-      "kind": "proto",
-      "source": "csproj"
     },
     {
       "sourceRepo": "voting-ecollecting-proto",
@@ -1466,13 +1445,6 @@
       "version": null,
       "kind": "validation",
       "source": ".gitmodules"
-    },
-    {
-      "sourceRepo": "voting-ecollecting-citizen-eservice",
-      "targetRepo": "voting-library-dotnet",
-      "version": null,
-      "kind": "shared-lib",
-      "source": "csproj"
     },
     {
       "sourceRepo": "voting-library-angular",
@@ -1545,10 +1517,24 @@
       "source": "convention"
     },
     {
+      "sourceRepo": "voting-ecollecting-service",
+      "targetRepo": "voting-library-dotnet",
+      "version": null,
+      "kind": "shared-lib",
+      "source": "convention"
+    },
+    {
       "sourceRepo": "voting-ecollecting-citizen-eservice",
       "targetRepo": "voting-ecollecting-proto",
       "version": null,
       "kind": "proto",
+      "source": "convention"
+    },
+    {
+      "sourceRepo": "voting-ecollecting-citizen-eservice",
+      "targetRepo": "voting-library-dotnet",
+      "version": null,
+      "kind": "shared-lib",
       "source": "convention"
     },
     {
@@ -13019,7 +13005,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@abraxas/base-components",
-      "declaredVersion": "21.80.0",
+      "declaredVersion": "21.97.0",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13032,7 +13018,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@abraxas/voting-ecollecting-proto",
-      "declaredVersion": "1.114.0",
+      "declaredVersion": "1.114.1",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13045,7 +13031,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@abraxas/voting-lib",
-      "declaredVersion": "5.17.13",
+      "declaredVersion": "5.17.15",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13058,7 +13044,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/animations",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13071,7 +13057,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/common",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13084,7 +13070,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/compiler",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13097,7 +13083,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/core",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13110,7 +13096,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/forms",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13123,7 +13109,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/platform-browser",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13136,7 +13122,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/platform-browser-dynamic",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13149,7 +13135,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/router",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13175,7 +13161,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "angularx-qrcode",
-      "declaredVersion": "21.0.4",
+      "declaredVersion": "21.0.5",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13227,7 +13213,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "lodash",
-      "declaredVersion": "4.17.23",
+      "declaredVersion": "4.18.1",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13292,7 +13278,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular-devkit/build-angular",
-      "declaredVersion": "21.2.5",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13370,7 +13356,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/cli",
-      "declaredVersion": "21.2.5",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13383,7 +13369,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@angular/compiler-cli",
-      "declaredVersion": "21.2.6",
+      "declaredVersion": "21.2.21",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13396,7 +13382,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@types/lodash",
-      "declaredVersion": "4.17.24",
+      "declaredVersion": "4.17.25",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13435,7 +13421,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "concurrently",
-      "declaredVersion": "9.2.1",
+      "declaredVersion": "10.0.5",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13487,7 +13473,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "lint-staged",
-      "declaredVersion": "16.3.2",
+      "declaredVersion": "17.3.0",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13513,7 +13499,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "ng-packagr",
-      "declaredVersion": "21.2.0",
+      "declaredVersion": "21.2.7",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13526,7 +13512,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "prettier",
-      "declaredVersion": "3.8.1",
+      "declaredVersion": "3.9.6",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13552,7 +13538,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "stylelint",
-      "declaredVersion": "17.4.0",
+      "declaredVersion": "17.14.1",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13578,7 +13564,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "stylelint-scss",
-      "declaredVersion": "7.0.0",
+      "declaredVersion": "7.2.0",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13604,7 +13590,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "wait-on",
-      "declaredVersion": "9.0.4",
+      "declaredVersion": "9.1.0",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -13617,896 +13603,882 @@
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Roslynator.Analyzers",
-      "declaredVersion": "4.10.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "StyleCop.Analyzers",
-      "declaredVersion": "1.2.0-beta.556",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Microsoft.Extensions.DependencyInjection.Abstractions",
-      "declaredVersion": "8.0.2",
-      "msbuildProperty": "MsExtensionsVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Microsoft.Extensions.Logging.Abstractions",
-      "declaredVersion": "8.0.2",
-      "msbuildProperty": "MsExtensionsVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Common",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Microsoft.NET.Test.Sdk",
-      "declaredVersion": "17.8.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Moq",
-      "declaredVersion": "4.20.70",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "xunit",
-      "declaredVersion": "2.9.3",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "xunit.runner.visualstudio",
-      "declaredVersion": "3.0.2",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "coverlet.collector",
-      "declaredVersion": "6.0.4",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "coverlet.msbuild",
-      "declaredVersion": "6.0.4",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "JunitXml.TestLogger",
-      "declaredVersion": "3.0.134",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Testing",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Verify.Xunit",
-      "declaredVersion": "28.16.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Newtonsoft.Json",
-      "declaredVersion": "13.0.3",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "ErikEJ.EntityFrameworkCore.DgmlBuilder",
-      "declaredVersion": "6.0.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Npgsql.EntityFrameworkCore.PostgreSQL",
-      "declaredVersion": "8.0.4",
-      "msbuildProperty": "NpgsqlEfCoreVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Database",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "DistributedLock.Postgres",
-      "declaredVersion": "1.2.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Microsoft.EntityFrameworkCore.Design",
-      "declaredVersion": "8.0.2",
-      "msbuildProperty": "EfCoreVersion",
-      "installedVersion": null,
-      "direct": true,
-      "transitive": false,
-      "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
-      "dev": false
-    },
-    {
-      "repo": "voting-ecollecting-service",
-      "ecosystem": "nuget",
-      "name": "System.Linq.Async",
-      "declaredVersion": "6.0.3",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "FluentValidation",
-      "declaredVersion": "11.9.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Grpc.AspNetCore",
-      "declaredVersion": "2.63.0",
-      "msbuildProperty": "GrpcAspNetCoreVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Grpc.Net.Client.Web",
-      "declaredVersion": "2.63.0",
-      "msbuildProperty": "GrpcAspNetCoreVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Basis.Service.Proto",
-      "declaredVersion": "1.138.3",
-      "msbuildProperty": "VotingBasisServiceProtoVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Iam",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Grpc",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Stimmregister.Service.Proto",
-      "declaredVersion": "3.12.0",
-      "msbuildProperty": "VotingStimmregisterServiceProtoVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Swashbuckle.AspNetCore",
-      "declaredVersion": "6.5.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Swashbuckle.AspNetCore.Annotations",
-      "declaredVersion": "6.5.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.ECollecting.Admin.Service.Proto",
-      "declaredVersion": "1.114.0",
-      "msbuildProperty": "VotingECollectingProtoVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.RestValidation",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Rest",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Riok.Mapperly",
-      "declaredVersion": "4.1.1",
-      "msbuildProperty": "MapperlyVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "DistributedLock.Core",
-      "declaredVersion": "1.0.7",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "FluentValidation.DependencyInjectionExtensions",
-      "declaredVersion": "11.9.0",
-      "msbuildProperty": "FluentValidationVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "NCrontab.Signed",
-      "declaredVersion": "3.3.3",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Iam.SecondFactor",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Scheduler",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.UserNotifications",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Cryptography.Kms",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Cryptography.Mocks",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "CsvHelper",
-      "declaredVersion": "33.1.0",
-      "msbuildProperty": "CsvHelperVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "prometheus-net",
-      "declaredVersion": "8.2.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Microsoft.VisualStudio.Azure.Containers.Tools.Targets",
-      "declaredVersion": "1.19.5",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Grpc.AspNetCore.Server.Reflection",
-      "declaredVersion": "2.63.0",
-      "msbuildProperty": "GrpcAspNetCoreVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Grpc.AspNetCore.Web",
-      "declaredVersion": "2.63.0",
-      "msbuildProperty": "GrpcAspNetCoreVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore",
-      "declaredVersion": "8.0.2",
-      "msbuildProperty": "EfCoreVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "msbuild-props",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "prometheus-net.AspNetCore",
-      "declaredVersion": "8.2.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "prometheus-net.AspNetCore.Grpc",
-      "declaredVersion": "8.2.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "prometheus-net.AspNetCore.HealthChecks",
-      "declaredVersion": "8.2.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Serilog.AspNetCore",
-      "declaredVersion": "8.0.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Serilog.Expressions",
-      "declaredVersion": "4.0.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Prometheus",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "TngTech.ArchUnitNET.xUnit",
-      "declaredVersion": "0.11.3",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Polly.Core",
-      "declaredVersion": "8.5.2",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "System.IO.Hashing",
-      "declaredVersion": "8.0.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.ECollecting.Citizen.Service.Proto",
-      "declaredVersion": "1.114.0",
-      "msbuildProperty": "VotingECollectingProtoVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Cryptography",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.DmDoc",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.MalwareScanner",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Mime",
-      "declaredVersion": "3.6.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Database.Postgres",
-      "declaredVersion": "22.1.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-service",
       "ecosystem": "nuget",
       "name": "Verify.SystemJson",
-      "declaredVersion": "1.4.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
@@ -14597,294 +14569,266 @@
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Roslynator.Analyzers",
-      "declaredVersion": "4.11.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "StyleCop.Analyzers",
-      "declaredVersion": "1.2.0-beta.354",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Microsoft.Extensions.Logging.Abstractions",
-      "declaredVersion": "8.0.2",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
-      "dev": false
-    },
-    {
-      "repo": "voting-ecollecting-citizen-eservice",
-      "ecosystem": "nuget",
-      "name": "Microsoft.AspNetCore.Authentication.Abstractions",
-      "declaredVersion": "2.2.0",
-      "msbuildProperty": null,
-      "installedVersion": null,
-      "direct": true,
-      "transitive": false,
-      "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
-      "dev": false
-    },
-    {
-      "repo": "voting-ecollecting-citizen-eservice",
-      "ecosystem": "nuget",
-      "name": "Microsoft.AspNetCore.Authentication.JwtBearer",
-      "declaredVersion": "8.0.3",
-      "msbuildProperty": null,
-      "installedVersion": null,
-      "direct": true,
-      "transitive": false,
-      "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "prometheus-net.AspNetCore",
-      "declaredVersion": "8.2.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "prometheus-net.AspNetCore.HealthChecks",
-      "declaredVersion": "8.2.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Serilog.AspNetCore",
-      "declaredVersion": "8.0.1",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Serilog.Expressions",
-      "declaredVersion": "4.0.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Common",
-      "declaredVersion": "22.2.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Rest",
-      "declaredVersion": "22.2.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Scheduler",
-      "declaredVersion": "22.2.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Yarp.ReverseProxy",
-      "declaredVersion": "2.3.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Microsoft.Extensions.Configuration",
-      "declaredVersion": "8.0.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Microsoft.NET.Test.Sdk",
-      "declaredVersion": "17.8.0",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "xunit",
-      "declaredVersion": "2.9.3",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "xunit.runner.visualstudio",
-      "declaredVersion": "3.0.2",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "coverlet.collector",
-      "declaredVersion": "6.0.4",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "coverlet.msbuild",
-      "declaredVersion": "6.0.4",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "JunitXml.TestLogger",
-      "declaredVersion": "3.0.134",
+      "declaredVersion": null,
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "third-party",
-      "osvEligible": true,
-      "versionSource": "csproj",
+      "osvEligible": false,
+      "versionSource": "central-unresolved",
       "dev": false
     },
     {
       "repo": "voting-ecollecting-citizen-eservice",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Testing",
-      "declaredVersion": "22.2.0",
-      "msbuildProperty": "VotingLibVersion",
+      "declaredVersion": null,
+      "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
       "transitive": false,
       "scope": "first-party",
       "osvEligible": false,
-      "versionSource": "msbuild-props",
+      "versionSource": "central-unresolved",
       "dev": false
     }
   ],
@@ -15014,46 +14958,6 @@
       "source": "osv-api"
     },
     {
-      "id": "GHSA-39pv-4j6c-2g6v",
-      "aliases": [
-        "CVE-2026-54266"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/common",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.8,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 8.8,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "@angular/common: Weak 32-Bit Cache Key Hashing in `HttpTransferCache` Leading to Cross-Request Data Leakage and State Poisoning",
-      "fixedIn": [
-        "22.0.1",
-        "21.2.17",
-        "20.3.25"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-39pv-4j6c-2g6v",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-54266",
-        "https://github.com/angular/angular/pull/69153",
-        "https://github.com/angular/angular/commit/5f36274da3f961430ae72865159afa02a1dd9133",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
       "id": "GHSA-48r7-hpm6-gfxm",
       "aliases": [
         "CVE-2026-54268"
@@ -15149,46 +15053,6 @@
       },
       "repos": [
         "per-auskunft-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.2,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 8.2,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
-      },
-      "summary": "@angular/common: Denial of Service (DoS) via OOM in Date Formatting (formatDate)",
-      "fixedIn": [
-        "22.0.1",
-        "21.2.17",
-        "20.3.25"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-48r7-hpm6-gfxm",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-54268",
-        "https://github.com/angular/angular/pull/69197",
-        "https://github.com/angular/angular/commit/eeb03f4ea310e2e51ba5d53a421ec7b418e186cd",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-48r7-hpm6-gfxm",
-      "aliases": [
-        "CVE-2026-54268"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/common",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
       ],
       "severity": "HIGH",
       "cvssScore": 8.2,
@@ -15336,44 +15200,6 @@
       "source": "osv-api"
     },
     {
-      "id": "GHSA-jhpw-976m-542j",
-      "aliases": [
-        "CVE-2026-68945"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/common",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.8,
-      "cvssV3": null,
-      "cvssV4": {
-        "version": "4.0",
-        "score": 8.8,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:L/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning",
-      "fixedIn": [
-        "22.0.2",
-        "21.2.19",
-        "20.3.27"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-jhpw-976m-542j",
-        "https://github.com/angular/angular/pull/68571",
-        "https://github.com/angular/angular/commit/6867f77ec779a0a24f6339ad6c775f444202103c",
-        "https://github.com/angular/angular/commit/948a8d6831e8920b54663ec79421da95210e0e35",
-        "https://github.com/angular/angular/commit/a64e2883e9dc4abdac70209129be303de79e5b2b",
-        "https://github.com/angular/angular/commit/a6c7fc5c13e6e494a4c9bd8e773b8d4b2a99b20c",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
       "id": "GHSA-p3vc-36g9-x9gr",
       "aliases": [
         "CVE-2026-50171"
@@ -15469,46 +15295,6 @@
       },
       "repos": [
         "per-auskunft-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.2,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 8.2,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
-      },
-      "summary": "@angular/common: Denial of Service (DoS) via OOM in Number Formatting (digitsInfo)",
-      "fixedIn": [
-        "22.0.0-rc.2",
-        "20.3.22",
-        "19.2.23",
-        "21.2.15"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-p3vc-36g9-x9gr",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-50171",
-        "https://github.com/angular/angular/pull/68840",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-p3vc-36g9-x9gr",
-      "aliases": [
-        "CVE-2026-50171"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/common",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
       ],
       "severity": "HIGH",
       "cvssScore": 8.2,
@@ -15662,46 +15448,6 @@
       "source": "osv-api"
     },
     {
-      "id": "GHSA-q6f4-qqrg-jv6x",
-      "aliases": [
-        "CVE-2026-50170"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/common",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.2,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 7.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 8.2,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "@angular/common: Information Leak via Default Caching of Credentialed Requests in HttpTransferCache",
-      "fixedIn": [
-        "22.0.0-rc.2",
-        "20.3.22",
-        "19.2.23",
-        "21.2.15"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-q6f4-qqrg-jv6x",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-50170",
-        "https://github.com/angular/angular/pull/67964",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
       "id": "GHSA-58w9-8g37-x9v5",
       "aliases": [
         "CVE-2026-54265"
@@ -15826,46 +15572,6 @@
       "source": "osv-api"
     },
     {
-      "id": "GHSA-58w9-8g37-x9v5",
-      "aliases": [
-        "CVE-2026-54265"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/compiler",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "MEDIUM",
-      "cvssScore": 5.3,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 5.3,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "@angular/compiler: Two-Way Property Binding Sanitization Bypass (XSS)",
-      "fixedIn": [
-        "22.0.1",
-        "21.2.17",
-        "20.3.25"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-58w9-8g37-x9v5",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-54265",
-        "https://github.com/angular/angular/pull/69107",
-        "https://github.com/angular/angular/commit/3c70270c96677c0dd33585f2afe8e187113e5fb4",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
       "id": "GHSA-f3m7-gqxr-g87x",
       "aliases": [
         "CVE-2026-50557"
@@ -16120,88 +15826,6 @@
       "source": "osv-api"
     },
     {
-      "id": "GHSA-f3m7-gqxr-g87x",
-      "aliases": [
-        "CVE-2026-50557"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/compiler",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "MEDIUM",
-      "cvssScore": 5.3,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 5.3,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "Angular: Template and Attribute Namespace Sanitization Bypass (XSS)",
-      "fixedIn": [
-        "21.2.15",
-        "22.0.0-rc.2",
-        "20.3.22",
-        "19.2.22"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-f3m7-gqxr-g87x",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-50557",
-        "https://github.com/angular/angular/pull/68689",
-        "https://github.com/angular/angular/pull/68868",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-f3m7-gqxr-g87x",
-      "aliases": [
-        "CVE-2026-50557"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/core",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "MEDIUM",
-      "cvssScore": 5.3,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 5.3,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "Angular: Template and Attribute Namespace Sanitization Bypass (XSS)",
-      "fixedIn": [
-        "21.2.15",
-        "22.0.0-rc.2",
-        "20.3.22",
-        "19.2.22"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-f3m7-gqxr-g87x",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-50557",
-        "https://github.com/angular/angular/pull/68689",
-        "https://github.com/angular/angular/pull/68868",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
       "id": "GHSA-jj27-h5hq-8x99",
       "aliases": [
         "CVE-2026-69151"
@@ -16406,80 +16030,6 @@
       },
       "repos": [
         "per-auskunft-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 7.6,
-      "cvssV3": null,
-      "cvssV4": {
-        "version": "4.0",
-        "score": 7.6,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
-      "fixedIn": [
-        "22.0.1",
-        "21.2.19",
-        "20.3.27"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
-        "https://github.com/angular/angular/pull/68821",
-        "https://github.com/angular/angular/pull/69306",
-        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
-        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-jj27-h5hq-8x99",
-      "aliases": [
-        "CVE-2026-69151"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/compiler",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 7.6,
-      "cvssV3": null,
-      "cvssV4": {
-        "version": "4.0",
-        "score": 7.6,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
-      "fixedIn": [
-        "22.0.1",
-        "21.2.19",
-        "20.3.27"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-jj27-h5hq-8x99",
-        "https://github.com/angular/angular/pull/68821",
-        "https://github.com/angular/angular/pull/69306",
-        "https://github.com/angular/angular/commit/417a4071a776464d549509ed3aec121dbd2fda5e",
-        "https://github.com/angular/angular/commit/6c41f5ca01c0ae045fc7d929b72853a11eb55865",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-jj27-h5hq-8x99",
-      "aliases": [
-        "CVE-2026-69151"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/core",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
       ],
       "severity": "HIGH",
       "cvssScore": 7.6,
@@ -16603,47 +16153,6 @@
       },
       "repos": [
         "per-auskunft-webapp"
-      ],
-      "severity": "MEDIUM",
-      "cvssScore": 5.3,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 5.3,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "@angular/core: Angular Template and Dynamic Component Namespace Bypass leading to Cross-Site Scripting (XSS)",
-      "fixedIn": [
-        "21.2.15",
-        "22.0.0-rc.2",
-        "19.2.23",
-        "20.3.22"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-692r-grfm-v8x7",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-52725",
-        "https://github.com/angular/angular/pull/68686",
-        "https://github.com/angular/angular/pull/68713",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-692r-grfm-v8x7",
-      "aliases": [
-        "CVE-2026-52725"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/core",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
       ],
       "severity": "MEDIUM",
       "cvssScore": 5.3,
@@ -16769,46 +16278,6 @@
       },
       "repos": [
         "per-auskunft-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.6,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.1,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
-      },
-      "cvssV4": {
-        "version": "4.0",
-        "score": 8.6,
-        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:P/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
-      },
-      "summary": "Angular Client Hydration DOM Clobbering & Response-Cache Poisoning",
-      "fixedIn": [
-        "22.0.1",
-        "21.2.17",
-        "20.3.25"
-      ],
-      "references": [
-        "https://github.com/angular/angular/security/advisories/GHSA-rgjc-h3x7-9mwg",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-54267",
-        "https://github.com/angular/angular/pull/69064",
-        "https://github.com/angular/angular/commit/6bde84fa8e6a5770b54040fbbc9bf10d5d0386fa",
-        "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-rgjc-h3x7-9mwg",
-      "aliases": [
-        "CVE-2026-54267"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "@angular/core",
-        "installedVersion": "21.2.6"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
       ],
       "severity": "HIGH",
       "cvssScore": 8.6,
@@ -17176,78 +16645,6 @@
         "https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP",
         "https://developer.mozilla.org/en-US/docs/Web/Security/Attacks/XSS",
         "https://github.com/angular/angular"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-f23m-r3pf-42rh",
-      "aliases": [
-        "CVE-2025-13465",
-        "CVE-2026-2950",
-        "GHSA-xxjr-mmjv-4gpg"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "lodash",
-        "installedVersion": "4.17.23"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "MEDIUM",
-      "cvssScore": 6.5,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 6.5,
-        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L"
-      },
-      "cvssV4": null,
-      "summary": "lodash vulnerable to Prototype Pollution via array path bypass in `_.unset` and `_.omit`",
-      "fixedIn": [
-        "4.18.0"
-      ],
-      "references": [
-        "https://github.com/lodash/lodash/security/advisories/GHSA-f23m-r3pf-42rh",
-        "https://github.com/lodash/lodash/security/advisories/GHSA-xxjr-mmjv-4gpg",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-2950",
-        "https://github.com/lodash/lodash"
-      ],
-      "source": "osv-api"
-    },
-    {
-      "id": "GHSA-r5fr-rjxr-66jc",
-      "aliases": [
-        "CVE-2021-23337",
-        "CVE-2026-4800",
-        "GHSA-35jh-r3h4-6jhm"
-      ],
-      "package": {
-        "ecosystem": "npm",
-        "name": "lodash",
-        "installedVersion": "4.17.23"
-      },
-      "repos": [
-        "voting-ecollecting-webapp"
-      ],
-      "severity": "HIGH",
-      "cvssScore": 8.1,
-      "cvssV3": {
-        "version": "3.1",
-        "score": 8.1,
-        "vector": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:H"
-      },
-      "cvssV4": null,
-      "summary": "lodash vulnerable to Code Injection via `_.template` imports key names",
-      "fixedIn": [
-        "4.18.0"
-      ],
-      "references": [
-        "https://github.com/lodash/lodash/security/advisories/GHSA-r5fr-rjxr-66jc",
-        "https://nvd.nist.gov/vuln/detail/CVE-2026-4800",
-        "https://github.com/lodash/lodash/commit/3469357cff396a26c363f8c1b5a91dde28ba4b1c",
-        "https://cna.openjsf.org/security-advisories.html",
-        "https://github.com/advisories/GHSA-35jh-r3h4-6jhm",
-        "https://github.com/lodash/lodash"
       ],
       "source": "osv-api"
     }
