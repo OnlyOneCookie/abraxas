@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-09-04T07:03:40.674Z",
+  "generatedAt": "2026-09-05T06:48:18.022Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-04T07:03:40.674Z"
+      "scannedAt": "2026-09-05T06:48:18.022Z"
     },
     "coverage": {
       "repos": 34,
@@ -313,7 +312,7 @@
       "description": "VOTING Ausmittlung Service",
       "lastPush": "2026-08-31T19:54:45Z",
       "stars": 3,
-      "forks": 2,
+      "forks": 3,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ausmittlung-service/blob/main/CHANGELOG.md",
@@ -345,7 +344,7 @@
       "description": "VOTING Ausmittlung Proto",
       "lastPush": "2026-08-31T19:54:17Z",
       "stars": 1,
-      "forks": 0,
+      "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-proto",
       "docsUrl": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ausmittlung-proto/blob/main/CHANGELOG.md",
@@ -374,7 +373,7 @@
       "description": "VOTING Ausmittlung Web Application",
       "lastPush": "2026-08-31T19:54:12Z",
       "stars": 1,
-      "forks": 1,
+      "forks": 2,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ausmittlung-webapp/blob/main/CHANGELOG.md",
@@ -1002,13 +1001,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "💻 VOTING Wahlvorschlag Web Application",
-      "lastPush": "2026-08-28T09:30:02Z",
+      "lastPush": "2026-09-04T12:23:59Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-wahlvorschlag-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-wahlvorschlag-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-wahlvorschlag-webapp/blob/main/CHANGELOG.md",
-      "version": "4.12.0",
+      "version": "4.12.1",
       "security": {
         "critical": false,
         "notes": []
@@ -1027,13 +1026,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING Wahlvorschlag Service",
-      "lastPush": "2026-08-31T20:02:23Z",
+      "lastPush": "2026-09-04T12:24:06Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-wahlvorschlag-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-wahlvorschlag-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-wahlvorschlag-service/blob/main/CHANGELOG.md",
-      "version": "2.15.5",
+      "version": "2.15.6",
       "security": {
         "critical": false,
         "notes": []
