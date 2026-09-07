@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-09-06T06:57:55.652Z",
+  "generatedAt": "2026-09-07T07:08:28.816Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-06T06:57:55.652Z"
+      "scannedAt": "2026-09-07T07:08:28.816Z"
     },
     "coverage": {
       "repos": 34,
@@ -481,7 +480,7 @@
       "type": "library",
       "language": "C#",
       "description": "VOTING Library Dotnet",
-      "lastPush": "2026-08-31T19:56:54Z",
+      "lastPush": "2026-09-07T06:44:37Z",
       "stars": 2,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-library-dotnet",
