@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-07T07:08:28.816Z",
+  "generatedAt": "2026-09-08T07:02:51.645Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -11,7 +11,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-07T07:08:28.816Z"
+      "scannedAt": "2026-09-08T07:02:51.645Z"
     },
     "coverage": {
       "repos": 34,
@@ -310,13 +310,13 @@
       "type": "service",
       "language": "C#",
       "description": "VOTING Ausmittlung Service",
-      "lastPush": "2026-08-31T19:54:45Z",
+      "lastPush": "2026-09-07T17:27:04Z",
       "stars": 3,
       "forks": 3,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ausmittlung-service/blob/main/CHANGELOG.md",
-      "version": "2.102.0",
+      "version": "2.102.1",
       "security": {
         "critical": true,
         "notes": [
@@ -424,13 +424,13 @@
       "type": "service",
       "language": "C#",
       "description": "VOTING Basis Service",
-      "lastPush": "2026-08-31T19:54:22Z",
+      "lastPush": "2026-09-07T17:29:54Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-basis-service",
       "docsUrl": null,
       "changelogUrl": "https://github.com/abraxas-labs/voting-basis-service/blob/main/CHANGELOG.md",
-      "version": "2.85.0",
+      "version": "2.85.1",
       "security": {
         "critical": true,
         "notes": []
@@ -555,13 +555,13 @@
       "type": "app",
       "language": "C#",
       "description": "💻 VOTING Stimmunterlagen Offline Client App",
-      "lastPush": "2026-06-16T14:39:58Z",
+      "lastPush": "2026-09-07T07:29:35Z",
       "stars": 1,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-offline-client-app",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-offline-client-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-offline-client-app/blob/main/CHANGELOG.md",
-      "version": "1.29.0",
+      "version": "1.31.0",
       "security": {
         "critical": false,
         "notes": []
@@ -605,7 +605,7 @@
       "type": "docs",
       "language": "PowerShell",
       "description": "📚 Includes all superordinate documentation for VOTING Stimmunterlagen Offline Client (e.g. architecture documentation, finding list, etc.) ",
-      "lastPush": "2026-07-06T12:41:23Z",
+      "lastPush": "2026-09-07T10:40:15Z",
       "stars": 1,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-offline-client-docs",
