@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-08T07:02:51.645Z",
+  "generatedAt": "2026-09-09T07:11:58.603Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -11,7 +11,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-08T07:02:51.645Z"
+      "scannedAt": "2026-09-09T07:11:58.603Z"
     },
     "coverage": {
       "repos": 34,
@@ -1051,13 +1051,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "💻 VOTING E-Collecting Web Application",
-      "lastPush": "2026-09-01T10:17:16Z",
+      "lastPush": "2026-09-08T07:46:45Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-webapp/blob/main/CHANGELOG.md",
-      "version": "1.150.16",
+      "version": "1.150.17",
       "security": {
         "critical": true,
         "notes": [
@@ -1078,13 +1078,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING E-Collecting Service",
-      "lastPush": "2026-09-01T10:17:18Z",
+      "lastPush": "2026-09-08T07:46:44Z",
       "stars": 1,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-service/blob/main/CHANGELOG.md",
-      "version": "1.163.11",
+      "version": "1.163.16",
       "security": {
         "critical": true,
         "notes": [
