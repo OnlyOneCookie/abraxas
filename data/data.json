@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-09-11T07:07:14.727Z",
+  "generatedAt": "2026-09-12T07:00:07.087Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-11T07:07:14.727Z"
+      "scannedAt": "2026-09-12T07:00:07.087Z"
     },
     "coverage": {
       "repos": 34,
@@ -606,7 +605,7 @@
       "type": "docs",
       "language": "PowerShell",
       "description": "📚 Includes all superordinate documentation for VOTING Stimmunterlagen Offline Client (e.g. architecture documentation, finding list, etc.) ",
-      "lastPush": "2026-09-07T10:40:15Z",
+      "lastPush": "2026-09-11T07:46:47Z",
       "stars": 1,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-offline-client-docs",
