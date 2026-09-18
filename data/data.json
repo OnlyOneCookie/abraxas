@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-09-17T07:21:13.574Z",
+  "generatedAt": "2026-09-18T07:13:05.456Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-17T07:21:13.573Z"
+      "scannedAt": "2026-09-18T07:13:05.456Z"
     },
     "coverage": {
       "repos": 34,
@@ -400,13 +399,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "VOTING Basis Web Application",
-      "lastPush": "2026-08-31T19:54:18Z",
+      "lastPush": "2026-09-18T07:10:47Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-basis-webapp",
       "docsUrl": null,
       "changelogUrl": "https://github.com/abraxas-labs/voting-basis-webapp/blob/main/CHANGELOG.md",
-      "version": "3.69.0",
+      "version": "3.70.0",
       "security": {
         "critical": true,
         "notes": []
@@ -425,13 +424,13 @@
       "type": "service",
       "language": "C#",
       "description": "VOTING Basis Service",
-      "lastPush": "2026-09-07T17:29:54Z",
+      "lastPush": "2026-09-18T07:10:37Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-basis-service",
       "docsUrl": null,
       "changelogUrl": "https://github.com/abraxas-labs/voting-basis-service/blob/main/CHANGELOG.md",
-      "version": "2.85.1",
+      "version": "2.86.0",
       "security": {
         "critical": true,
         "notes": []
@@ -798,13 +797,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "💻 VOTING Stimmunterlagen Online Web Application",
-      "lastPush": "2026-09-09T09:26:24Z",
+      "lastPush": "2026-09-17T13:25:56Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-webapp/blob/main/CHANGELOG.md",
-      "version": "3.37.6",
+      "version": "3.38.1",
       "security": {
         "critical": false,
         "notes": []
@@ -823,13 +822,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING Stimmunterlagen Online Service",
-      "lastPush": "2026-09-09T09:26:34Z",
+      "lastPush": "2026-09-17T13:25:58Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-service/blob/main/CHANGELOG.md",
-      "version": "2.67.4",
+      "version": "2.68.0",
       "security": {
         "critical": false,
         "notes": []
@@ -852,13 +851,13 @@
       "type": "proto",
       "language": "Shell",
       "description": "🧱 VOTING Stimmunterlagen Online Proto",
-      "lastPush": "2026-09-09T09:26:40Z",
+      "lastPush": "2026-09-17T13:26:53Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-proto",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmunterlagen-online-proto/blob/main/CHANGELOG.md",
-      "version": "3.21.2",
+      "version": "3.22.0",
       "security": {
         "critical": false,
         "notes": []
@@ -1052,13 +1051,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "💻 VOTING E-Collecting Web Application",
-      "lastPush": "2026-09-08T07:46:45Z",
+      "lastPush": "2026-09-17T13:18:24Z",
       "stars": 0,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-webapp/blob/main/CHANGELOG.md",
-      "version": "1.150.17",
+      "version": "1.150.22",
       "security": {
         "critical": true,
         "notes": [
@@ -1079,13 +1078,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING E-Collecting Service",
-      "lastPush": "2026-09-08T07:46:44Z",
+      "lastPush": "2026-09-17T13:18:26Z",
       "stars": 1,
       "forks": 1,
       "url": "https://github.com/abraxas-labs/voting-ecollecting-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-ecollecting-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ecollecting-service/blob/main/CHANGELOG.md",
-      "version": "1.163.16",
+      "version": "1.163.22",
       "security": {
         "critical": true,
         "notes": [
@@ -1254,7 +1253,7 @@
     {
       "sourceRepo": "voting-basis-webapp",
       "targetRepo": "voting-basis-proto",
-      "version": "1.143.0",
+      "version": "1.144.0",
       "kind": "proto",
       "source": "package.json"
     },
@@ -1436,7 +1435,7 @@
     {
       "sourceRepo": "voting-ecollecting-webapp",
       "targetRepo": "voting-library-angular",
-      "version": "5.17.15",
+      "version": "5.17.17",
       "kind": "shared-lib",
       "source": "package.json"
     },
@@ -3289,7 +3288,7 @@
       "repo": "voting-basis-webapp",
       "ecosystem": "npm",
       "name": "@abraxas/voting-basis-service-proto",
-      "declaredVersion": "1.143.0",
+      "declaredVersion": "1.144.0",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -4275,7 +4274,7 @@
       "repo": "voting-basis-service",
       "ecosystem": "nuget",
       "name": "Voting.Basis.Service.Proto",
-      "declaredVersion": "1.143.0",
+      "declaredVersion": "1.144.0",
       "msbuildProperty": "VotingBasisProtoVersion",
       "installedVersion": null,
       "direct": true,
@@ -4359,7 +4358,7 @@
       "repo": "voting-basis-service",
       "ecosystem": "nuget",
       "name": "Voting.Basis.Eventing.Proto",
-      "declaredVersion": "1.143.0",
+      "declaredVersion": "1.144.0",
       "msbuildProperty": "VotingBasisProtoVersion",
       "installedVersion": null,
       "direct": true,
@@ -9767,7 +9766,7 @@
       "repo": "voting-stimmunterlagen-online-webapp",
       "ecosystem": "npm",
       "name": "@abraxas/voting-stimmunterlagen-proto",
-      "declaredVersion": "3.21.2",
+      "declaredVersion": "3.22.0",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
@@ -10846,7 +10845,7 @@
       "repo": "voting-stimmunterlagen-online-service",
       "ecosystem": "nuget",
       "name": "Voting.Stimmunterlagen.Proto",
-      "declaredVersion": "3.21.2",
+      "declaredVersion": "3.22.0",
       "msbuildProperty": "VotingStimmunterlagenProtoVersion",
       "installedVersion": null,
       "direct": true,
@@ -11028,7 +11027,7 @@
       "repo": "voting-stimmunterlagen-online-service",
       "ecosystem": "nuget",
       "name": "Voting.Basis.Eventing.Proto",
-      "declaredVersion": "1.140.0",
+      "declaredVersion": "1.144.0",
       "msbuildProperty": "VotingBasisProtoVersion",
       "installedVersion": null,
       "direct": true,
@@ -11098,7 +11097,7 @@
       "repo": "voting-stimmunterlagen-online-service",
       "ecosystem": "nuget",
       "name": "Voting.Stimmunterlagen.OfflineClient.Shared",
-      "declaredVersion": "2.2.3",
+      "declaredVersion": "2.4.0",
       "msbuildProperty": null,
       "installedVersion": null,
       "direct": true,
@@ -13032,7 +13031,7 @@
       "repo": "voting-ecollecting-webapp",
       "ecosystem": "npm",
       "name": "@abraxas/voting-lib",
-      "declaredVersion": "5.17.15",
+      "declaredVersion": "5.17.17",
       "installedVersion": null,
       "direct": true,
       "transitive": false,
