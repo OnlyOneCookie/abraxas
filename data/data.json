@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-09-25T07:19:45.320Z",
+  "generatedAt": "2026-09-26T07:15:59.910Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-25T07:19:45.320Z"
+      "scannedAt": "2026-09-26T07:15:59.910Z"
     },
     "coverage": {
       "repos": 34,
@@ -658,13 +657,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING Stimmregister Service",
-      "lastPush": "2026-08-28T11:59:38Z",
+      "lastPush": "2026-09-25T12:32:59Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmregister-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmregister-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmregister-service/blob/main/CHANGELOG.md",
-      "version": "2.35.3",
+      "version": "2.36.6",
       "security": {
         "critical": true,
         "notes": [
@@ -8579,6 +8578,20 @@
       "repo": "voting-stimmregister-service",
       "ecosystem": "nuget",
       "name": "Voting.Lib.Iam.SecondFactor",
+      "declaredVersion": "22.4.0",
+      "msbuildProperty": "VotingLibVersion",
+      "installedVersion": null,
+      "direct": true,
+      "transitive": false,
+      "scope": "first-party",
+      "osvEligible": false,
+      "versionSource": "msbuild-props",
+      "dev": false
+    },
+    {
+      "repo": "voting-stimmregister-service",
+      "ecosystem": "nuget",
+      "name": "Voting.Lib.UserNotifications",
       "declaredVersion": "22.4.0",
       "msbuildProperty": "VotingLibVersion",
       "installedVersion": null,
