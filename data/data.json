@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-30T08:10:55.015Z",
+  "generatedAt": "2026-10-01T08:32:20.364Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-09-30T08:10:55.014Z"
+      "scannedAt": "2026-10-01T08:32:20.364Z"
     },
     "coverage": {
       "repos": 34,
@@ -16698,6 +16698,162 @@
         "https://nvd.nist.gov/vuln/detail/CVE-2026-54267",
         "https://github.com/angular/angular/pull/69064",
         "https://github.com/angular/angular/commit/6bde84fa8e6a5770b54040fbbc9bf10d5d0386fa",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-ff3f-86qr-9cv3",
+      "aliases": [
+        "CVE-2026-101896"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.8"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular Server-Side Rendering (SSR): Denial of Service via Numeric URL Matrix Parameters",
+      "fixedIn": [
+        "22.2.0",
+        "21.2.24",
+        "20.3.32"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-ff3f-86qr-9cv3",
+        "https://github.com/angular/angular/issues/70716",
+        "https://github.com/angular/angular/pull/70717",
+        "https://github.com/angular/angular/commit/03872a80bcf1c89b2b04cdd3f444b2ee954da583",
+        "https://github.com/angular/angular/commit/5af61216eab8bf4a6697a1d79bda3d857c06f89d",
+        "https://github.com/angular/angular/commit/ddfe21072ba32ca4cd9d7d3c6b7df66af81d58c4",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-ff3f-86qr-9cv3",
+      "aliases": [
+        "CVE-2026-101896"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.5"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular Server-Side Rendering (SSR): Denial of Service via Numeric URL Matrix Parameters",
+      "fixedIn": [
+        "22.2.0",
+        "21.2.24",
+        "20.3.32"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-ff3f-86qr-9cv3",
+        "https://github.com/angular/angular/issues/70716",
+        "https://github.com/angular/angular/pull/70717",
+        "https://github.com/angular/angular/commit/03872a80bcf1c89b2b04cdd3f444b2ee954da583",
+        "https://github.com/angular/angular/commit/5af61216eab8bf4a6697a1d79bda3d857c06f89d",
+        "https://github.com/angular/angular/commit/ddfe21072ba32ca4cd9d7d3c6b7df66af81d58c4",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-ff3f-86qr-9cv3",
+      "aliases": [
+        "CVE-2026-101896"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "20.2.0"
+      },
+      "repos": [
+        "per-auskunft-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular Server-Side Rendering (SSR): Denial of Service via Numeric URL Matrix Parameters",
+      "fixedIn": [
+        "22.2.0",
+        "21.2.24",
+        "20.3.32"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-ff3f-86qr-9cv3",
+        "https://github.com/angular/angular/issues/70716",
+        "https://github.com/angular/angular/pull/70717",
+        "https://github.com/angular/angular/commit/03872a80bcf1c89b2b04cdd3f444b2ee954da583",
+        "https://github.com/angular/angular/commit/5af61216eab8bf4a6697a1d79bda3d857c06f89d",
+        "https://github.com/angular/angular/commit/ddfe21072ba32ca4cd9d7d3c6b7df66af81d58c4",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-ff3f-86qr-9cv3",
+      "aliases": [
+        "CVE-2026-101896"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.21"
+      },
+      "repos": [
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "Angular Server-Side Rendering (SSR): Denial of Service via Numeric URL Matrix Parameters",
+      "fixedIn": [
+        "22.2.0",
+        "21.2.24",
+        "20.3.32"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-ff3f-86qr-9cv3",
+        "https://github.com/angular/angular/issues/70716",
+        "https://github.com/angular/angular/pull/70717",
+        "https://github.com/angular/angular/commit/03872a80bcf1c89b2b04cdd3f444b2ee954da583",
+        "https://github.com/angular/angular/commit/5af61216eab8bf4a6697a1d79bda3d857c06f89d",
+        "https://github.com/angular/angular/commit/ddfe21072ba32ca4cd9d7d3c6b7df66af81d58c4",
         "https://github.com/angular/angular"
       ],
       "source": "osv-api"
