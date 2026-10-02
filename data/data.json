@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-01T08:32:20.364Z",
+  "generatedAt": "2026-10-02T08:07:39.271Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-10-01T08:32:20.364Z"
+      "scannedAt": "2026-10-02T08:07:39.270Z"
     },
     "coverage": {
       "repos": 34,
