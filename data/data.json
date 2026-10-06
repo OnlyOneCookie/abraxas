@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-05T08:37:41.916Z",
+  "generatedAt": "2026-10-06T08:43:35.335Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-10-05T08:37:41.916Z"
+      "scannedAt": "2026-10-06T08:43:35.335Z"
     },
     "coverage": {
       "repos": 34,
@@ -16896,6 +16896,40 @@
         "https://cna.openjsf.org/security-advisories.html",
         "https://github.com/moment/moment",
         "https://github.com/moment/moment/releases/tag/2.31.0"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-c8x8-7fp4-3x9w",
+      "aliases": [
+        "CVE-2026-104847"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "prosemirror-view",
+        "installedVersion": "1.41.6"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.5,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.5,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "ProseMirror has a XSS vulnerability in prosemirror-view's paste handling",
+      "fixedIn": [
+        "1.42.3"
+      ],
+      "references": [
+        "https://github.com/ProseMirror/prosemirror-view/security/advisories/GHSA-c8x8-7fp4-3x9w",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-104847",
+        "https://github.com/ProseMirror/prosemirror-view/commit/20dc0a911a79f8fc6640dbbea5e7d68d3c4784b7",
+        "https://github.com/ProseMirror/prosemirror-view/commit/2e91a612bbc1248e55b4f6061fc93fe459f977c1",
+        "https://github.com/ProseMirror/prosemirror-view"
       ],
       "source": "osv-api"
     },
