@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-20T07:18:12.093Z",
+  "generatedAt": "2026-10-21T07:16:04.988Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-10-20T07:18:12.093Z"
+      "scannedAt": "2026-10-21T07:16:04.988Z"
     },
     "coverage": {
       "repos": 34,
@@ -16703,6 +16703,275 @@
       "source": "osv-api"
     },
     {
+      "id": "GHSA-57xq-rjx2-v5xh",
+      "aliases": [
+        "CVE-2026-111751"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.8"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via RouterLink Query Parameter Retention in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-57xq-rjx2-v5xh",
+        "https://github.com/angular/angular/issues/70908",
+        "https://github.com/angular/angular/pull/70953",
+        "https://github.com/angular/angular/commit/319a3c4f3268f4f96ac4acdbb118737d2261e0be",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-57xq-rjx2-v5xh",
+      "aliases": [
+        "CVE-2026-111751"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.5"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via RouterLink Query Parameter Retention in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-57xq-rjx2-v5xh",
+        "https://github.com/angular/angular/issues/70908",
+        "https://github.com/angular/angular/pull/70953",
+        "https://github.com/angular/angular/commit/319a3c4f3268f4f96ac4acdbb118737d2261e0be",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-57xq-rjx2-v5xh",
+      "aliases": [
+        "CVE-2026-111751"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.21"
+      },
+      "repos": [
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via RouterLink Query Parameter Retention in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-57xq-rjx2-v5xh",
+        "https://github.com/angular/angular/issues/70908",
+        "https://github.com/angular/angular/pull/70953",
+        "https://github.com/angular/angular/commit/319a3c4f3268f4f96ac4acdbb118737d2261e0be",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-62vg-58rm-qff7",
+      "aliases": [
+        "CVE-2026-111752"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.8"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via Unmatched Empty-Path Outlet Route Matching in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25",
+        "20.3.33"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-62vg-58rm-qff7",
+        "https://github.com/angular/angular/issues/70997",
+        "https://github.com/angular/angular/pull/71055",
+        "https://github.com/angular/angular/commit/a83f8119acd466b524ae0113096ed188358d6d6c",
+        "https://github.com/angular/angular/commit/b0d2ba0f54e21cb57ea5a0ca0d8e6065f28e23a0",
+        "https://github.com/angular/angular/commit/b6bf6504adab1a78cc62ad8402f6bed229e620bd",
+        "https://github.com/angular/angular/commit/e9bf52aa03a3b9b302c33ffbc967ef0e1de5fb79",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-62vg-58rm-qff7",
+      "aliases": [
+        "CVE-2026-111752"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.5"
+      },
+      "repos": [
+        "voting-library-angular"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via Unmatched Empty-Path Outlet Route Matching in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25",
+        "20.3.33"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-62vg-58rm-qff7",
+        "https://github.com/angular/angular/issues/70997",
+        "https://github.com/angular/angular/pull/71055",
+        "https://github.com/angular/angular/commit/a83f8119acd466b524ae0113096ed188358d6d6c",
+        "https://github.com/angular/angular/commit/b0d2ba0f54e21cb57ea5a0ca0d8e6065f28e23a0",
+        "https://github.com/angular/angular/commit/b6bf6504adab1a78cc62ad8402f6bed229e620bd",
+        "https://github.com/angular/angular/commit/e9bf52aa03a3b9b302c33ffbc967ef0e1de5fb79",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-62vg-58rm-qff7",
+      "aliases": [
+        "CVE-2026-111752"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "20.2.0"
+      },
+      "repos": [
+        "per-auskunft-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via Unmatched Empty-Path Outlet Route Matching in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25",
+        "20.3.33"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-62vg-58rm-qff7",
+        "https://github.com/angular/angular/issues/70997",
+        "https://github.com/angular/angular/pull/71055",
+        "https://github.com/angular/angular/commit/a83f8119acd466b524ae0113096ed188358d6d6c",
+        "https://github.com/angular/angular/commit/b0d2ba0f54e21cb57ea5a0ca0d8e6065f28e23a0",
+        "https://github.com/angular/angular/commit/b6bf6504adab1a78cc62ad8402f6bed229e620bd",
+        "https://github.com/angular/angular/commit/e9bf52aa03a3b9b302c33ffbc967ef0e1de5fb79",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-62vg-58rm-qff7",
+      "aliases": [
+        "CVE-2026-111752"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/router",
+        "installedVersion": "21.2.21"
+      },
+      "repos": [
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 8.2,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 8.2,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/router: Denial of Service via Unmatched Empty-Path Outlet Route Matching in Server-Side Rendering (SSR)",
+      "fixedIn": [
+        "22.2.1",
+        "21.2.25",
+        "20.3.33"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-62vg-58rm-qff7",
+        "https://github.com/angular/angular/issues/70997",
+        "https://github.com/angular/angular/pull/71055",
+        "https://github.com/angular/angular/commit/a83f8119acd466b524ae0113096ed188358d6d6c",
+        "https://github.com/angular/angular/commit/b0d2ba0f54e21cb57ea5a0ca0d8e6065f28e23a0",
+        "https://github.com/angular/angular/commit/b6bf6504adab1a78cc62ad8402f6bed229e620bd",
+        "https://github.com/angular/angular/commit/e9bf52aa03a3b9b302c33ffbc967ef0e1de5fb79",
+        "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
       "id": "GHSA-ff3f-86qr-9cv3",
       "aliases": [
         "CVE-2026-101896"
@@ -17020,6 +17289,43 @@
         "https://github.com/angular/angular/releases/tag/19.2.16",
         "https://github.com/angular/angular/releases/tag/20.3.14",
         "https://github.com/angular/angular/releases/tag/21.0.1"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-jfgx-762w-99vr",
+      "aliases": [
+        "CVE-2026-111753"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "@angular/common",
+        "installedVersion": "20.2.0"
+      },
+      "repos": [
+        "per-auskunft-webapp"
+      ],
+      "severity": "MEDIUM",
+      "cvssScore": 5.9,
+      "cvssV3": null,
+      "cvssV4": {
+        "version": "4.0",
+        "score": 5.9,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:P/PR:N/UI:A/VC:H/VI:N/VA:N/SC:N/SI:N/SA:N"
+      },
+      "summary": "@angular/common: XSRF Token Leakage via URL Parsing Discrepancy in Angular HTTP Client (Incomplete fix for CVE-2025-66035)",
+      "fixedIn": [
+        "21.0.3",
+        "20.3.34"
+      ],
+      "references": [
+        "https://github.com/angular/angular/security/advisories/GHSA-jfgx-762w-99vr",
+        "https://github.com/angular/angular/pull/65683",
+        "https://github.com/angular/angular/pull/71295",
+        "https://github.com/angular/angular/commit/0659d11c854c9c6b886a2e925afef98d70bb005f",
+        "https://github.com/angular/angular/commit/20474d3f0fd7c64071add6e84acf720627e5c19b",
+        "https://github.com/angular/angular/commit/933ce817d53e25926844fa56af8230816763d08e",
+        "https://github.com/angular/angular"
       ],
       "source": "osv-api"
     },
