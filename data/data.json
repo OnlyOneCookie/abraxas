@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-27T07:29:39.066Z",
+  "generatedAt": "2026-10-28T08:02:02.827Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-10-27T07:29:39.066Z"
+      "scannedAt": "2026-10-28T08:02:02.827Z"
     },
     "coverage": {
       "repos": 34,
@@ -17124,6 +17124,47 @@
         "https://github.com/angular/angular/commit/5af61216eab8bf4a6697a1d79bda3d857c06f89d",
         "https://github.com/angular/angular/commit/ddfe21072ba32ca4cd9d7d3c6b7df66af81d58c4",
         "https://github.com/angular/angular"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-gcqx-w48m-w2h4",
+      "aliases": [
+        "CVE-2026-93753"
+      ],
+      "package": {
+        "ecosystem": "npm",
+        "name": "deepmerge",
+        "installedVersion": "4.3.1"
+      },
+      "repos": [
+        "voting-ausmittlung-webapp",
+        "voting-basis-webapp",
+        "voting-stimmregister-webapp",
+        "voting-stimmunterlagen-online-webapp",
+        "voting-wahlvorschlag-webapp",
+        "voting-ecollecting-webapp"
+      ],
+      "severity": "LOW",
+      "cvssScore": 2.7,
+      "cvssV3": {
+        "version": "3.1",
+        "score": 5.3,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N"
+      },
+      "cvssV4": {
+        "version": "4.0",
+        "score": 2.7,
+        "vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:L/VA:N/SC:N/SI:N/SA:N/E:U"
+      },
+      "summary": "deepmerge mergeObject() allows prototype poisoning of returned objects",
+      "fixedIn": [],
+      "references": [
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-93753",
+        "https://github.com/TehShrike/deepmerge/issues/273",
+        "https://github.com/TehShrike/deepmerge",
+        "https://github.com/TehShrike/deepmerge/blob/5b87756a5671635679001cbac72aa42f23472c81/index.js#L39-L60",
+        "https://www.vulncheck.com/advisories/deepmerge-through-4.3.1-prototype-poisoning-via-mergeobject"
       ],
       "source": "osv-api"
     },
