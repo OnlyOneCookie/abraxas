@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-11-04T08:46:36.612Z",
+  "generatedAt": "2026-11-05T09:09:48.549Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-11-04T08:46:36.612Z"
+      "scannedAt": "2026-11-05T09:09:48.548Z"
     },
     "coverage": {
       "repos": 34,
@@ -658,13 +657,13 @@
       "type": "service",
       "language": "C#",
       "description": "💻 VOTING Stimmregister Service",
-      "lastPush": "2026-09-25T12:32:59Z",
+      "lastPush": "2026-11-04T13:44:15Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-stimmregister-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-stimmregister-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-stimmregister-service/blob/main/CHANGELOG.md",
-      "version": "2.36.6",
+      "version": "2.37.4",
       "security": {
         "critical": true,
         "notes": [
