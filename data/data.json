@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T09:14:48.132Z",
+  "generatedAt": "2026-11-14T08:44:25.337Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-11-13T09:14:48.132Z"
+      "scannedAt": "2026-11-14T08:44:25.337Z"
     },
     "coverage": {
       "repos": 34,
@@ -14862,6 +14862,85 @@
     }
   ],
   "vulnerabilities": [
+    {
+      "id": "GHSA-6vhm-j9h7-f9gh",
+      "aliases": [
+        "CVE-2026-128082"
+      ],
+      "package": {
+        "ecosystem": "nuget",
+        "name": "AutoMapper",
+        "installedVersion": "15.1.3"
+      },
+      "repos": [
+        "voting-ausmittlung-service",
+        "voting-basis-service",
+        "voting-stimmregister-service",
+        "voting-stimmunterlagen-online-service",
+        "voting-wahlvorschlag-service"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.5,
+      "cvssV3": {
+        "version": "3.1",
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      },
+      "cvssV4": null,
+      "summary": "AutoMapper: Uncontrolled Recursion with Constructor Parameters",
+      "fixedIn": [
+        "16.3.0",
+        "15.1.4"
+      ],
+      "references": [
+        "https://github.com/LuckyPennySoftware/AutoMapper/security/advisories/GHSA-6vhm-j9h7-f9gh",
+        "https://github.com/LuckyPennySoftware/AutoMapper/commit/4d51a4b8125b4d2302f2f1f455747c9648ad1acb",
+        "https://github.com/LuckyPennySoftware/AutoMapper/commit/639c2748cb9d3d07df8b86879ba7bcf211675c86",
+        "https://github.com/LuckyPennySoftware/AutoMapper",
+        "https://github.com/LuckyPennySoftware/AutoMapper/releases/tag/v15.1.4",
+        "https://github.com/LuckyPennySoftware/AutoMapper/releases/tag/v16.3.0"
+      ],
+      "source": "osv-api"
+    },
+    {
+      "id": "GHSA-gpwp-5797-mjff",
+      "aliases": [
+        "CVE-2026-128081"
+      ],
+      "package": {
+        "ecosystem": "nuget",
+        "name": "AutoMapper",
+        "installedVersion": "15.1.3"
+      },
+      "repos": [
+        "voting-ausmittlung-service",
+        "voting-basis-service",
+        "voting-stimmregister-service",
+        "voting-stimmunterlagen-online-service",
+        "voting-wahlvorschlag-service"
+      ],
+      "severity": "HIGH",
+      "cvssScore": 7.5,
+      "cvssV3": {
+        "version": "3.1",
+        "score": 7.5,
+        "vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+      },
+      "cvssV4": null,
+      "summary": "AutoMapper: Denial of Service via uncontrolled recursion that bypasses MaxDepth",
+      "fixedIn": [
+        "16.3.0",
+        "15.1.4"
+      ],
+      "references": [
+        "https://github.com/LuckyPennySoftware/AutoMapper/security/advisories/GHSA-gpwp-5797-mjff",
+        "https://github.com/LuckyPennySoftware/AutoMapper/commit/aee81b50574c3c7005283cca2b2396e295bd8ed9",
+        "https://github.com/LuckyPennySoftware/AutoMapper",
+        "https://github.com/LuckyPennySoftware/AutoMapper/releases/tag/v15.1.4",
+        "https://github.com/LuckyPennySoftware/AutoMapper/releases/tag/v16.3.0"
+      ],
+      "source": "osv-api"
+    },
     {
       "id": "GHSA-39pv-4j6c-2g6v",
       "aliases": [
