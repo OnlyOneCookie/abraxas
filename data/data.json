@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-17T10:21:57.088Z",
+  "generatedAt": "2026-11-18T09:53:15.017Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
@@ -12,7 +12,7 @@
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-11-17T10:21:57.088Z"
+      "scannedAt": "2026-11-18T09:53:15.017Z"
     },
     "coverage": {
       "repos": 34,
@@ -17413,12 +17413,16 @@
       ],
       "references": [
         "https://github.com/angular/angular/security/advisories/GHSA-jfgx-762w-99vr",
+        "https://nvd.nist.gov/vuln/detail/CVE-2026-111753",
+        "https://github.com/angular/angular/issues/71294",
         "https://github.com/angular/angular/pull/65683",
         "https://github.com/angular/angular/pull/71295",
         "https://github.com/angular/angular/commit/0659d11c854c9c6b886a2e925afef98d70bb005f",
         "https://github.com/angular/angular/commit/20474d3f0fd7c64071add6e84acf720627e5c19b",
         "https://github.com/angular/angular/commit/933ce817d53e25926844fa56af8230816763d08e",
-        "https://github.com/angular/angular"
+        "https://github.com/angular/angular",
+        "https://github.com/angular/angular/releases/tag/21.0.3",
+        "https://github.com/angular/angular/releases/tag/v20.3.34"
       ],
       "source": "osv-api"
     },
