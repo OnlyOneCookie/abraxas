@@ -1,18 +1,17 @@
 {
-  "generatedAt": "2026-11-24T12:09:32.538Z",
+  "generatedAt": "2026-11-25T10:59:11.836Z",
   "meta": {
     "org": "abraxas-labs",
     "pipelineVersion": "0.1.0",
     "triggers": [
-      "schedule",
-      "vuln-only"
+      "schedule"
     ],
     "vulnScan": {
       "enabled": true,
       "scanner": "osv",
       "mode": "direct",
       "coverageNote": "Direct public third-party deps (NuGet props resolved when possible). No transitive scan — that needs their private registry.",
-      "scannedAt": "2026-11-24T12:09:32.537Z"
+      "scannedAt": "2026-11-25T10:59:11.836Z"
     },
     "coverage": {
       "repos": 34,
@@ -311,13 +310,13 @@
       "type": "service",
       "language": "C#",
       "description": "VOTING Ausmittlung Service",
-      "lastPush": "2026-10-29T22:33:38Z",
+      "lastPush": "2026-11-25T09:48:58Z",
       "stars": 3,
       "forks": 3,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-service",
       "docsUrl": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ausmittlung-service/blob/main/CHANGELOG.md",
-      "version": "2.104.3",
+      "version": "2.104.5",
       "security": {
         "critical": true,
         "notes": [
@@ -372,13 +371,13 @@
       "type": "webapp",
       "language": "TypeScript",
       "description": "VOTING Ausmittlung Web Application",
-      "lastPush": "2026-10-29T22:28:59Z",
+      "lastPush": "2026-11-25T09:08:49Z",
       "stars": 1,
       "forks": 2,
       "url": "https://github.com/abraxas-labs/voting-ausmittlung-webapp",
       "docsUrl": "https://github.com/abraxas-labs/voting-ausmittlung-docs",
       "changelogUrl": "https://github.com/abraxas-labs/voting-ausmittlung-webapp/blob/main/CHANGELOG.md",
-      "version": "3.35.0",
+      "version": "3.35.2",
       "security": {
         "critical": true,
         "notes": [
@@ -425,13 +424,13 @@
       "type": "service",
       "language": "C#",
       "description": "VOTING Basis Service",
-      "lastPush": "2026-10-29T22:26:16Z",
+      "lastPush": "2026-11-25T09:08:25Z",
       "stars": 0,
       "forks": 0,
       "url": "https://github.com/abraxas-labs/voting-basis-service",
       "docsUrl": null,
       "changelogUrl": "https://github.com/abraxas-labs/voting-basis-service/blob/main/CHANGELOG.md",
-      "version": "2.88.1",
+      "version": "2.88.2",
       "security": {
         "critical": true,
         "notes": []
